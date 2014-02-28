@@ -1,4 +1,5 @@
-﻿using NSpec;
+﻿using System;
+using NSpec;
 
 namespace GameOfLife.UnitTests
 {
@@ -24,6 +25,11 @@ namespace GameOfLife.UnitTests
             _subject.InvokeHandler(_event);
 
             _handler.ConsumedEventWithId(_event.ID).should_be_true();
+        }
+
+        void it_throws_an_error_when_trying_to_invoke_a_handler_that_has_not_been_registered()
+        {
+            expect<Exception>(() => _subject.InvokeHandler(_event));
         }
     }
 }
