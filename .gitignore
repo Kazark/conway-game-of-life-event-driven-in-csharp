@@ -1,0 +1,13 @@
+*.swp
+*.swo
+
+*.suo
+*.user
+
+*.dll
+*.exe
+*.bdb
+*.cache
+*.manifest
+
+packages/
