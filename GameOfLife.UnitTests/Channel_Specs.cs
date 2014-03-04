@@ -44,6 +44,14 @@ namespace GameOfLife.UnitTests
             _subject.HasMore().should_be_true();
         }
 
+        void it_has_a_FIFO_queueing_discipline()
+        {
+            _subject.Consume(_event);
+            _subject.Consume(new EventForTesting());
+            _subject.DeliverOne();
+            _handler.ConsumedEventWithId(_event.ID).should_be_true();
+        }
+
         void it_passes_the_event_to_the_handler_when_dequeueing_it()
         {
             _subject.Consume(_event);
