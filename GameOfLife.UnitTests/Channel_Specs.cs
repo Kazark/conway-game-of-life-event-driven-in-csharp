@@ -20,6 +20,12 @@ namespace GameOfLife.UnitTests
 
         void it_is_empty_at_initialization()
         {
+            _subject.HasMore().should_be_false();
+        }
+
+        void it_can_add_events_to_the_queue()
+        {
+            _subject.Consume(new EventForTesting());
             _subject.HasMore().should_be_true();
         }
     }
