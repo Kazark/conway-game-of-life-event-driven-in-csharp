@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Channel.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="IConsume.cs" />
     <Compile Include="Router.cs" />

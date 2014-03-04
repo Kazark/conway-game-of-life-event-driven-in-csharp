@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Channel_Specs.cs" />
     <Compile Include="EventForTesting.cs" />
     <Compile Include="EventForTestingHandler.cs" />
     <Compile Include="Router_Specs.cs" />
