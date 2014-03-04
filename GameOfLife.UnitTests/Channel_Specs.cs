@@ -25,8 +25,15 @@ namespace GameOfLife.UnitTests
 
         void it_can_add_events_to_the_queue()
         {
-            _subject.Consume(new EventForTesting());
+            _subject.Consume(_event);
             _subject.HasMore().should_be_true();
+        }
+
+        void it_can_pull_events_off_the_queue()
+        {
+            _subject.Consume(_event);
+            _subject.DeliverOne();
+            _subject.HasMore().should_be_false();
         }
     }
 }

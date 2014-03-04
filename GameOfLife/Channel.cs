@@ -15,5 +15,10 @@ namespace GameOfLife
         {
             _eventQueue.Enqueue(eventData);
         }
+
+        public void DeliverOne()
+        {
+            _eventQueue.Dequeue();
+        }
     }
 }
