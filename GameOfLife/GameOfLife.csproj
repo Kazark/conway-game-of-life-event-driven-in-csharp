@@ -44,6 +44,7 @@
     <Compile Include="Event.cs" />
     <Compile Include="Events\CellDied.cs" />
     <Compile Include="Events\CellLived.cs" />
+    <Compile Include="Events\Grid.cs" />
     <Compile Include="Events\PositionInGrid.cs" />
     <Compile Include="IConsume.cs" />
     <Compile Include="Router.cs" />

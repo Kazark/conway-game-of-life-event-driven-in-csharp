@@ -50,6 +50,7 @@
     <Compile Include="EventForTesting.cs" />
     <Compile Include="EventForTestingHandler.cs" />
     <Compile Include="EventHandlerForTesting.cs" />
+    <Compile Include="Events\Grid_Specs.cs" />
     <Compile Include="Router_Specs.cs" />
     <Compile Include="DebuggerShim.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
