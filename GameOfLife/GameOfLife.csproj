@@ -42,6 +42,9 @@
   <ItemGroup>
     <Compile Include="Channel.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="Events\CellDied.cs" />
+    <Compile Include="Events\CellLived.cs" />
+    <Compile Include="Events\PositionInGrid.cs" />
     <Compile Include="IConsume.cs" />
     <Compile Include="Router.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
