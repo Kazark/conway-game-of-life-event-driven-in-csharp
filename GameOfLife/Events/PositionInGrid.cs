@@ -20,7 +20,7 @@
         }
         public PositionInGrid southernNeighbor()
         {
-            return new PositionInGrid();
+            return new PositionInGrid { column = column, row = row + 1 };
         }
         public PositionInGrid southeasternNeighbor()
         {
