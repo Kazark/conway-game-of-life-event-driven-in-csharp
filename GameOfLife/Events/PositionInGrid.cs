@@ -8,7 +8,7 @@
         }
         public PositionInGrid northwesternNeighbor()
         {
-            return new PositionInGrid();
+            return new PositionInGrid { column = column - 1, row = row - 1};
         }
         public PositionInGrid westernNeighbor()
         {
