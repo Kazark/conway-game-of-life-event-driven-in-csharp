@@ -32,7 +32,7 @@
         }
         public PositionInGrid northeasternNeighbor()
         {
-            return new PositionInGrid();
+            return new PositionInGrid { column = column + 1, row = row - 1 };
         }
         public int row { get; set; }
         public int column { get; set; }
