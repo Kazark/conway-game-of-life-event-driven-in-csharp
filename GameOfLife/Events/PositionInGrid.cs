@@ -4,15 +4,15 @@
     {
         public PositionInGrid northernNeighbor()
         {
-            return new PositionInGrid { column = column, row = row - 1};
+            return new PositionInGrid { column = column, row = row - 1 };
         }
         public PositionInGrid northwesternNeighbor()
         {
-            return new PositionInGrid { column = column - 1, row = row - 1};
+            return new PositionInGrid { column = column - 1, row = row - 1 };
         }
         public PositionInGrid westernNeighbor()
         {
-            return new PositionInGrid();
+            return new PositionInGrid { column = column - 1, row = row };
         }
         public PositionInGrid southwesternNeighbor()
         {
