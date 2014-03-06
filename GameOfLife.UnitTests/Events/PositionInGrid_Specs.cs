@@ -45,5 +45,11 @@ namespace GameOfLife.UnitTests.Events
             _subject.southernNeighbor().row.should_be(3);
             _subject.southernNeighbor().column.should_be(0);
         }
+
+        void it_knows_the_position_of_its_southeastern_neighbor()
+        {
+            _subject.southeasternNeighbor().row.should_be(3);
+            _subject.southeasternNeighbor().column.should_be(1);
+        }
     }
 }
