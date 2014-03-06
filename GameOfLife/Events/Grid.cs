@@ -1,12 +1,15 @@
-﻿namespace GameOfLife.Events
-{
-    public class Grid
-    {
-        private int _size;
+﻿using System;
+using System.Collections.Generic;
 
-        public Grid(int size)
+namespace GameOfLife.Events
+{
+    public class Grid<T>
+    {
+        private readonly int _size;
+
+        public Grid(List<T> data)
         {
-            _size = size;
+            _size = Convert.ToInt32(Math.Sqrt(data.Count));
         }
 
         public int Size

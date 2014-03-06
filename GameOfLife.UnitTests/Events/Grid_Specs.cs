@@ -1,17 +1,21 @@
-﻿using NSpec;
+﻿using System.Collections.Generic;
+using NSpec;
 using GameOfLife.Events;
 
 namespace GameOfLife.UnitTests.Events
 {
     class Grid_Specs : nspec
     {
-        private Grid _subject;
+        private Grid<int> _subject;
 
-        public void it_is_initialized_with_number_of_rows_which_is_also_the_number_of_columns()
+        public void it_has_size_of_the_square_root_of_the_length_of_the_intialization_list()
         {
-            _subject = new Grid(4);
+            _subject = new Grid<int>(new List<int>
+                {
+                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+                });
 
-            _subject.Size.should_be(4);
+            _subject.Size.should_be(3);
         }
     }
 }
