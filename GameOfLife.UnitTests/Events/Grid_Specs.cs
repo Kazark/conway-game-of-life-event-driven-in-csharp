@@ -41,5 +41,17 @@ namespace GameOfLife.UnitTests.Events
             _subject.cellAt(2, 1).should_be(8);
             _subject.cellAt(2, 2).should_be(9);
         }
+
+        void it_returns_default_for_out_of_bounds_cell_requests()
+        {
+            _subject.cellAt(-1, -1).should_be(default(int));
+            _subject.cellAt(-1, 1).should_be(default(int));
+            _subject.cellAt(-1, 3).should_be(default(int));
+            _subject.cellAt(1, -1).should_be(default(int));
+            _subject.cellAt(1, 3).should_be(default(int));
+            _subject.cellAt(3, -1).should_be(default(int));
+            _subject.cellAt(3, 1).should_be(default(int));
+            _subject.cellAt(3, 3).should_be(default(int));
+        }
     }
 }

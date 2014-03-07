@@ -32,6 +32,10 @@ namespace GameOfLife.Events
 
         public T cellAt(int row, int column)
         {
+            if (row < 0 || row >= Size || column < 0 || column >= Size)
+            {
+                return default(T);
+            }
             return _data[row*Size+column];
         }
 
