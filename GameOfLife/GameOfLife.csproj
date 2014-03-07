@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Cell.cs" />
+    <Compile Include="Core\Events\LivingNeighborsOfDeadCellCounted.cs" />
+    <Compile Include="Core\Events\LivingNeighborsOfLiveCellCounted.cs" />
+    <Compile Include="Core\Handlers\LivingNeighborsCounter.cs" />
+    <Compile Include="Core\Events\GenerationComputed.cs" />
     <Compile Include="EventInfrastructure\Channel.cs" />
     <Compile Include="EventInfrastructure\Event.cs" />
     <Compile Include="Core\Events\CellDied.cs" />
