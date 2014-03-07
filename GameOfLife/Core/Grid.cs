@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace GameOfLife.Events
+namespace GameOfLife.Core
 {
     public class Grid<T> : IEnumerable<T>, IGrid<T>
     {

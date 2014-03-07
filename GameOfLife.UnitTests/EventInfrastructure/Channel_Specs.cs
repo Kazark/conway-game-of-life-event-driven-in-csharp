@@ -1,6 +1,7 @@
-﻿using NSpec;
+﻿using GameOfLife.EventInfrastructure;
+using NSpec;
 
-namespace GameOfLife.UnitTests
+namespace GameOfLife.UnitTests.EventInfrastructure
 {
     class Channel_Specs : nspec
     {

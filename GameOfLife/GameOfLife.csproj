@@ -40,15 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Channel.cs" />
-    <Compile Include="Event.cs" />
-    <Compile Include="Events\CellDied.cs" />
-    <Compile Include="Events\CellLived.cs" />
-    <Compile Include="Events\Grid.cs" />
-    <Compile Include="Events\IGrid.cs" />
-    <Compile Include="Events\PositionInGrid.cs" />
-    <Compile Include="IConsume.cs" />
-    <Compile Include="Router.cs" />
+    <Compile Include="EventInfrastructure\Channel.cs" />
+    <Compile Include="EventInfrastructure\Event.cs" />
+    <Compile Include="Core\Events\CellDied.cs" />
+    <Compile Include="Core\Events\CellLived.cs" />
+    <Compile Include="Core\Grid.cs" />
+    <Compile Include="Core\IGrid.cs" />
+    <Compile Include="Core\PositionInGrid.cs" />
+    <Compile Include="EventInfrastructure\IConsume.cs" />
+    <Compile Include="EventInfrastructure\Router.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

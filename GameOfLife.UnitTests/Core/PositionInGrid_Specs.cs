@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using GameOfLife.Events;
+using GameOfLife.Core;
 using NSpec;
 
-namespace GameOfLife.UnitTests.Events
+namespace GameOfLife.UnitTests.Core
 {
     class PositionInGrid_Specs : nspec
     {

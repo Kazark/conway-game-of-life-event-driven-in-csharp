@@ -1,4 +1,4 @@
-﻿namespace GameOfLife
+﻿namespace GameOfLife.EventInfrastructure
 {
     public interface Event
     {

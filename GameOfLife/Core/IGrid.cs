@@ -1,4 +1,4 @@
-namespace GameOfLife.Events
+namespace GameOfLife.Core
 {
     public interface IGrid<out T>
     {

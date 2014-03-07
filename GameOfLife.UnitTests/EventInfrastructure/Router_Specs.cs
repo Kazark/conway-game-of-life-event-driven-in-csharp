@@ -1,7 +1,8 @@
 ﻿using System;
+using GameOfLife.EventInfrastructure;
 using NSpec;
 
-namespace GameOfLife.UnitTests
+namespace GameOfLife.UnitTests.EventInfrastructure
 {
     class Router_Specs : nspec
     {

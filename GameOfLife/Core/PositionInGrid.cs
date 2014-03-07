@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GameOfLife.Events
+namespace GameOfLife.Core
 {
     public class PositionInGrid
     {

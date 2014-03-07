@@ -1,4 +1,6 @@
-﻿namespace GameOfLife.UnitTests
+﻿using GameOfLife.EventInfrastructure;
+
+namespace GameOfLife.UnitTests
 {
     class EventHandlerForTesting : IConsume<Event>
     {

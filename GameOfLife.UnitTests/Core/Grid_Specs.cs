@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameOfLife.Core;
 using NSpec;
-using GameOfLife.Events;
 
-namespace GameOfLife.UnitTests.Events
+namespace GameOfLife.UnitTests.Core
 {
     class Grid_Specs : nspec
     {
