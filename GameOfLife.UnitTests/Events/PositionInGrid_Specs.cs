@@ -1,4 +1,5 @@
-﻿using GameOfLife.Events;
+﻿using System.Linq;
+using GameOfLife.Events;
 using NSpec;
 
 namespace GameOfLife.UnitTests.Events
@@ -62,6 +63,11 @@ namespace GameOfLife.UnitTests.Events
         {
             _subject.northeasternNeighbor().row.should_be(1);
             _subject.northeasternNeighbor().column.should_be(1);
+        }
+
+        void it_has_an_iterator_for_all_its_neighbors()
+        {
+            _subject.neighbors().Count().should_be(8);
         }
     }
 }
