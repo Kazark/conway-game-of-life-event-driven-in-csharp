@@ -14,7 +14,7 @@ namespace GameOfLife.UnitTests.Events
         {
             _sourceList = new List<int>
                 {
-                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+                    1, 2, 3, 4, 5, 6, 7, 8, 9
                 };
             _subject = new Grid<int>(_sourceList);
         }
@@ -27,6 +27,19 @@ namespace GameOfLife.UnitTests.Events
         void it_can_be_iterated_over()
         {
             _subject.ToList().should_be(_sourceList);
+        }
+
+        void it_is_able_to_retrieved_cells_by_row_and_column()
+        {
+            _subject.cellAt(0, 0).should_be(1);
+            _subject.cellAt(0, 1).should_be(2);
+            _subject.cellAt(0, 2).should_be(3);
+            _subject.cellAt(1, 0).should_be(4);
+            _subject.cellAt(1, 1).should_be(5);
+            _subject.cellAt(1, 2).should_be(6);
+            _subject.cellAt(2, 0).should_be(7);
+            _subject.cellAt(2, 1).should_be(8);
+            _subject.cellAt(2, 2).should_be(9);
         }
     }
 }
