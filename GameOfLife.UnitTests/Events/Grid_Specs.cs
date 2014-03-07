@@ -26,7 +26,7 @@ namespace GameOfLife.UnitTests.Events
 
         void it_can_be_iterated_over()
         {
-            _subject.ToList().should_be(_sourceList);
+            _subject.ToList().Count.should_be(9);
         }
 
         void it_is_able_to_retrieved_cells_by_row_and_column()
