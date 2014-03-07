@@ -53,5 +53,19 @@ namespace GameOfLife.UnitTests.Events
             _subject.cellAt(3, 1).should_be(default(int));
             _subject.cellAt(3, 3).should_be(default(int));
         }
+
+        void it_is_able_to_retrieved_cells_by_position_in_grid()
+        {
+            _subject.cellAt(new PositionInGrid
+            {
+                column = 2,
+                row = 1
+            }).should_be(6);
+            _subject.cellAt(new PositionInGrid
+            {
+                column = 4,
+                row = -1
+            }).should_be(default(int));
+        }
     }
 }

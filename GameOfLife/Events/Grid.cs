@@ -41,7 +41,7 @@ namespace GameOfLife.Events
 
         public T cellAt(PositionInGrid position)
         {
-            return default(T);
+            return cellAt(position.row, position.column);
         }
     }
 }
