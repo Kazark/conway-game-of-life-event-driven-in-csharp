@@ -7,56 +7,56 @@ namespace GameOfLife.Core
         public int row { get; set; }
         public int column { get; set; }
 
-        public PositionInGrid northernNeighbor()
+        public PositionInGrid NorthernNeighbor()
         {
             return new PositionInGrid { column = column, row = row - 1 };
         }
 
-        public PositionInGrid northwesternNeighbor()
+        public PositionInGrid NorthwesternNeighbor()
         {
             return new PositionInGrid { column = column - 1, row = row - 1 };
         }
 
-        public PositionInGrid westernNeighbor()
+        public PositionInGrid WesternNeighbor()
         {
             return new PositionInGrid { column = column - 1, row = row };
         }
 
-        public PositionInGrid southwesternNeighbor()
+        public PositionInGrid SouthwesternNeighbor()
         {
             return new PositionInGrid { column = column - 1, row = row + 1 };
         }
 
-        public PositionInGrid southernNeighbor()
+        public PositionInGrid SouthernNeighbor()
         {
             return new PositionInGrid { column = column, row = row + 1 };
         }
 
-        public PositionInGrid southeasternNeighbor()
+        public PositionInGrid SoutheasternNeighbor()
         {
             return new PositionInGrid { column = column + 1, row = row + 1 };
         }
 
-        public PositionInGrid easternNeighbor()
+        public PositionInGrid EasternNeighbor()
         {
             return new PositionInGrid { column = column + 1, row = row };
         }
 
-        public PositionInGrid northeasternNeighbor()
+        public PositionInGrid NortheasternNeighbor()
         {
             return new PositionInGrid { column = column + 1, row = row - 1 };
         }
 
-        public IEnumerable<PositionInGrid> neighbors()
+        public IEnumerable<PositionInGrid> Neighbors()
         {
-            yield return northernNeighbor();
-            yield return northeasternNeighbor();
-            yield return easternNeighbor();
-            yield return southeasternNeighbor();
-            yield return southernNeighbor();
-            yield return southwesternNeighbor();
-            yield return westernNeighbor();
-            yield return northwesternNeighbor();
+            yield return NorthernNeighbor();
+            yield return NortheasternNeighbor();
+            yield return EasternNeighbor();
+            yield return SoutheasternNeighbor();
+            yield return SouthernNeighbor();
+            yield return SouthwesternNeighbor();
+            yield return WesternNeighbor();
+            yield return NorthwesternNeighbor();
         }
     }
 }

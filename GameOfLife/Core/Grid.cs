@@ -30,7 +30,7 @@ namespace GameOfLife.Core
             return GetEnumerator();
         }
 
-        public T cellAt(int row, int column)
+        public T CellAt(int row, int column)
         {
             if (row < 0 || row >= Size || column < 0 || column >= Size)
             {
@@ -39,9 +39,9 @@ namespace GameOfLife.Core
             return _data[row*Size+column];
         }
 
-        public T cellAt(PositionInGrid position)
+        public T CellAt(PositionInGrid position)
         {
-            return cellAt(position.row, position.column);
+            return CellAt(position.row, position.column);
         }
     }
 }

@@ -19,55 +19,55 @@ namespace GameOfLife.UnitTests.Core
 
         void it_knows_the_position_of_its_northern_neighbor()
         {
-            _subject.northernNeighbor().row.should_be(1);
-            _subject.northernNeighbor().column.should_be(0);
+            _subject.NorthernNeighbor().row.should_be(1);
+            _subject.NorthernNeighbor().column.should_be(0);
         }
 
         void it_knows_the_position_of_its_northwestern_neighbor()
         {
-            _subject.northwesternNeighbor().row.should_be(1);
-            _subject.northwesternNeighbor().column.should_be(-1);
+            _subject.NorthwesternNeighbor().row.should_be(1);
+            _subject.NorthwesternNeighbor().column.should_be(-1);
         }
 
         void it_knows_the_position_of_its_western_neighbor()
         {
-            _subject.westernNeighbor().row.should_be(2);
-            _subject.westernNeighbor().column.should_be(-1);
+            _subject.WesternNeighbor().row.should_be(2);
+            _subject.WesternNeighbor().column.should_be(-1);
         }
 
         void it_knows_the_position_of_its_southwestern_neighbor()
         {
-            _subject.southwesternNeighbor().row.should_be(3);
-            _subject.southwesternNeighbor().column.should_be(-1);
+            _subject.SouthwesternNeighbor().row.should_be(3);
+            _subject.SouthwesternNeighbor().column.should_be(-1);
         }
 
         void it_knows_the_position_of_its_southern_neighbor()
         {
-            _subject.southernNeighbor().row.should_be(3);
-            _subject.southernNeighbor().column.should_be(0);
+            _subject.SouthernNeighbor().row.should_be(3);
+            _subject.SouthernNeighbor().column.should_be(0);
         }
 
         void it_knows_the_position_of_its_southeastern_neighbor()
         {
-            _subject.southeasternNeighbor().row.should_be(3);
-            _subject.southeasternNeighbor().column.should_be(1);
+            _subject.SoutheasternNeighbor().row.should_be(3);
+            _subject.SoutheasternNeighbor().column.should_be(1);
         }
 
         void it_knows_the_position_of_its_eastern_neighbor()
         {
-            _subject.easternNeighbor().row.should_be(2);
-            _subject.easternNeighbor().column.should_be(1);
+            _subject.EasternNeighbor().row.should_be(2);
+            _subject.EasternNeighbor().column.should_be(1);
         }
 
         void it_knows_the_position_of_its_northeastern_neighbor()
         {
-            _subject.northeasternNeighbor().row.should_be(1);
-            _subject.northeasternNeighbor().column.should_be(1);
+            _subject.NortheasternNeighbor().row.should_be(1);
+            _subject.NortheasternNeighbor().column.should_be(1);
         }
 
         void it_has_an_iterator_for_all_its_neighbors()
         {
-            _subject.neighbors().Count().should_be(8);
+            _subject.Neighbors().Count().should_be(8);
         }
     }
 }
