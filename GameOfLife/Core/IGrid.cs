@@ -1,7 +1,7 @@
 namespace GameOfLife.Core
 {
-    public interface IGrid<out T>
+    public interface IGrid<T>
     {
-        T CellAt(PositionInGrid position);
+        Cell<T> CellAt(PositionInGrid position);
     }
 }

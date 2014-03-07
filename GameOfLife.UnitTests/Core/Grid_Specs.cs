@@ -31,41 +31,53 @@ namespace GameOfLife.UnitTests.Core
 
         void it_is_able_to_retrieved_cells_by_row_and_column()
         {
-            _subject.CellAt(0, 0).should_be(1);
-            _subject.CellAt(0, 1).should_be(2);
-            _subject.CellAt(0, 2).should_be(3);
-            _subject.CellAt(1, 0).should_be(4);
-            _subject.CellAt(1, 1).should_be(5);
-            _subject.CellAt(1, 2).should_be(6);
-            _subject.CellAt(2, 0).should_be(7);
-            _subject.CellAt(2, 1).should_be(8);
-            _subject.CellAt(2, 2).should_be(9);
+            _subject.CellValueAt(0, 0).should_be(1);
+            _subject.CellValueAt(0, 1).should_be(2);
+            _subject.CellValueAt(0, 2).should_be(3);
+            _subject.CellValueAt(1, 0).should_be(4);
+            _subject.CellValueAt(1, 1).should_be(5);
+            _subject.CellValueAt(1, 2).should_be(6);
+            _subject.CellValueAt(2, 0).should_be(7);
+            _subject.CellValueAt(2, 1).should_be(8);
+            _subject.CellValueAt(2, 2).should_be(9);
         }
 
         void it_returns_default_for_out_of_bounds_cell_requests()
         {
-            _subject.CellAt(-1, -1).should_be(default(int));
-            _subject.CellAt(-1, 1).should_be(default(int));
-            _subject.CellAt(-1, 3).should_be(default(int));
-            _subject.CellAt(1, -1).should_be(default(int));
-            _subject.CellAt(1, 3).should_be(default(int));
-            _subject.CellAt(3, -1).should_be(default(int));
-            _subject.CellAt(3, 1).should_be(default(int));
-            _subject.CellAt(3, 3).should_be(default(int));
+            _subject.CellValueAt(-1, -1).should_be(default(int));
+            _subject.CellValueAt(-1, 1).should_be(default(int));
+            _subject.CellValueAt(-1, 3).should_be(default(int));
+            _subject.CellValueAt(1, -1).should_be(default(int));
+            _subject.CellValueAt(1, 3).should_be(default(int));
+            _subject.CellValueAt(3, -1).should_be(default(int));
+            _subject.CellValueAt(3, 1).should_be(default(int));
+            _subject.CellValueAt(3, 3).should_be(default(int));
         }
 
         void it_is_able_to_retrieved_cells_by_position_in_grid()
         {
-            _subject.CellAt(new PositionInGrid
+            var position = new PositionInGrid
             {
                 column = 2,
                 row = 1
-            }).should_be(6);
-            _subject.CellAt(new PositionInGrid
+            };
+            var cell = _subject.CellAt(position);
+            cell.value.should_be(6);
+            cell.position.column.should_be(position.column);
+            cell.position.row.should_be(position.row);
+        }
+
+        void it_is_able_to_retrieved_out_of_bounds_cells_by_position_in_grid()
+        {
+            var position = new PositionInGrid
             {
                 column = 4,
                 row = -1
-            }).should_be(default(int));
+            };
+            var cell = _subject.CellAt(position);
+            cell.value.should_be(default(int));
+            cell.position.column.should_be(position.column);
+            cell.position.row.should_be(position.row);
         }
     }
 }
