@@ -3,7 +3,7 @@ using GameOfLife.EventInfrastructure;
 
 namespace GameOfLife.Core.Handlers
 {
-    class DetermineNextStateOfDeadCell : IConsume<LivingNeighborsOfDeadCellCounted>
+    public class DetermineNextStateOfDeadCell : IConsume<LivingNeighborsOfDeadCellCounted>
     {
         public void Consume(LivingNeighborsOfDeadCellCounted eventData)
         {
