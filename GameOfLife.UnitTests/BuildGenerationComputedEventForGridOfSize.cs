@@ -10,7 +10,12 @@ namespace GameOfLife.UnitTests
 
         public BuildGenerationComputedEventForGridOfSize(int size)
         {
-            _data = new List<bool>(size*size);
+            var length = size*size;
+            _data = new List<bool>(length);
+            for (var i = 0; _data.Count < length; i++)
+            {
+                _data.Add(false);
+            }
         }
 
         public BuildGenerationComputedEventForGridOfSize WithNLivingCells(int numberLiving)
