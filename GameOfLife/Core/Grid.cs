@@ -31,18 +31,18 @@ namespace GameOfLife.Core
             return GetEnumerator();
         }
 
-        public T CellValueAt(int row, int column)
+        public Cell<T> CellAt(int row, int column)
         {
             if (row < 0 || row >= Size || column < 0 || column >= Size)
             {
-                return default(T);
+                return new Cell<T>(this, null, default(T));
             }
-            return _data[row*Size+column].value;
+            return _data[row*Size+column];
         }
 
         public Cell<T> CellAt(PositionInGrid position)
         {
-            return new Cell<T>(this, position, CellValueAt(position.row, position.column));
+            return CellAt(position.row, position.column);
         }
     }
 }
