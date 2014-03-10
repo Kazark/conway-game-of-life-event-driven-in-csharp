@@ -2,7 +2,7 @@
 
 namespace GameOfLife.Core.Events
 {
-    class CellLived : Event
+    public class CellLived : Event
     {
         public PositionInGrid location { get; set; }
     }

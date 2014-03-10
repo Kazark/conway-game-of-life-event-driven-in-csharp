@@ -1,4 +1,5 @@
-﻿using GameOfLife.Core.Handlers;
+﻿using GameOfLife.Core.Events;
+using GameOfLife.Core.Handlers;
 using NSpec;
 
 namespace GameOfLife.UnitTests.Core.Handlers
@@ -6,9 +7,14 @@ namespace GameOfLife.UnitTests.Core.Handlers
     class DetermineNextStateOfDeadCell_Specs : nspec
     {
         private DetermineNextStateOfDeadCell _subject;
+        private GenericHandlerForTesting<CellLived> _cellLivedChannel;
+        private GenericHandlerForTesting<CellDied> _cellDiedChannel;
 
         void before_each()
         {
+            _cellLivedChannel = new GenericHandlerForTesting<CellLived>();
+            _cellDiedChannel = new GenericHandlerForTesting<CellDied>();
+            _subject = new DetermineNextStateOfDeadCell(_cellLivedChannel, _cellDiedChannel);
         }
 
         void it_determines_that_a_live_cell_with_less_than_two_living_neighbors_dies()
