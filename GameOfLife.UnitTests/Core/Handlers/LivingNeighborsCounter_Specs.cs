@@ -4,9 +4,9 @@ using NSpec;
 
 namespace GameOfLife.UnitTests.Core.Handlers
 {
-    class LivingNeighborsCounter_Specs : nspec
+    class CountLivingNeighbors_Specs : nspec
     {
-        private LivingNeighborsCounter _subject;
+        private CountLivingNeighbors _subject;
         private GenericHandlerForTesting<LivingNeighborsOfLiveCellCounted> _liveCellEventHandler;
         private GenericHandlerForTesting<LivingNeighborsOfDeadCellCounted> _deadCellEventHandler;
 
@@ -14,7 +14,7 @@ namespace GameOfLife.UnitTests.Core.Handlers
         {
             _liveCellEventHandler = new GenericHandlerForTesting<LivingNeighborsOfLiveCellCounted>();
             _deadCellEventHandler = new GenericHandlerForTesting<LivingNeighborsOfDeadCellCounted>();
-            _subject = new LivingNeighborsCounter(_liveCellEventHandler, _deadCellEventHandler);
+            _subject = new CountLivingNeighbors(_liveCellEventHandler, _deadCellEventHandler);
         }
 
         void it_publishes_an_event_for_each_cell_in_the_grid()

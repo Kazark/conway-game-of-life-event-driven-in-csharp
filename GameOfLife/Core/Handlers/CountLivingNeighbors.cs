@@ -4,12 +4,12 @@ using GameOfLife.EventInfrastructure;
 
 namespace GameOfLife.Core.Handlers
 {
-    public class LivingNeighborsCounter : IConsume<GenerationComputed>
+    public class CountLivingNeighbors : IConsume<GenerationComputed>
     {
         private readonly IConsume<LivingNeighborsOfLiveCellCounted> _liveCellEventHandler;
         private readonly IConsume<LivingNeighborsOfDeadCellCounted> _deadCellEventHandler;
 
-        public LivingNeighborsCounter(IConsume<LivingNeighborsOfLiveCellCounted> liveCellEventHandler,
+        public CountLivingNeighbors(IConsume<LivingNeighborsOfLiveCellCounted> liveCellEventHandler,
             IConsume<LivingNeighborsOfDeadCellCounted> deadCellEventHandler)
         {
             _liveCellEventHandler = liveCellEventHandler;

@@ -3,9 +3,9 @@ using GameOfLife.EventInfrastructure;
 
 namespace GameOfLife.Core.Handlers
 {
-    class NextStateOfDeadCellComputer : IConsume<LivingNeighborsOfDeadCellCounted>
+    class DetermineNextStateOfLivingCell : IConsume<LivingNeighborsOfLiveCellCounted>
     {
-        public void Consume(LivingNeighborsOfDeadCellCounted eventData)
+        public void Consume(LivingNeighborsOfLiveCellCounted eventData)
         {
             throw new System.NotImplementedException();
         }
