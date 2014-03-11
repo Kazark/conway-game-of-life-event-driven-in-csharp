@@ -17,27 +17,29 @@ namespace GameOfLife.UnitTests.Core.Handlers
             _subject = new DetermineNextStateOfDeadCell(_cellLivedChannel, _cellDiedChannel);
         }
 
-        void it_determines_that_a_live_cell_with_less_than_two_living_neighbors_dies()
+        void it_determines_that_a_dead_cell_with_less_than_three_living_neighbors_stays_dead()
+        {
+            _subject.Consume(new LivingNeighborsOfDeadCellCounted
+            {
+                livingNeighbors = 2
+            });
+            _cellLivedChannel.HandledEvents.Count.should_be(0);
+            _cellDiedChannel.HandledEvents.Count.should_be(1);
+        }
+
+        void it_determines_that_a_dead_cell_with_three_living_neighbors_comes_to_life()
         {
         }
 
-        void it_determines_that_a_live_cell_with_two_living_neighbors_survives()
+        void it_determines_that_a_dead_cell_with_more_than_three_living_neighbors_stays_dead()
         {
         }
 
-        void it_determines_that_a_live_cell_with_three_living_neighbors_survives()
+        void it_publishes_position_of_the_cell_if_it_stays_dead()
         {
         }
 
-        void it_determines_that_a_live_cell_with_more_than_three_living_neighbors_dies()
-        {
-        }
-
-        void it_publishes_the_position_of_the_cell_if_it_dies()
-        {
-        }
-
-        void it_publishes_the_position_of_the_cell_if_it_survives()
+        void it_publishes_position_of_the_cell_if_it_comes_to_life()
         {
         }
     }

@@ -17,7 +17,7 @@ namespace GameOfLife.Core.Handlers
 
         public void Consume(LivingNeighborsOfDeadCellCounted eventData)
         {
-            throw new System.NotImplementedException();
+            _cellDiedChannel.Consume(new CellDied());
         }
     }
 }
