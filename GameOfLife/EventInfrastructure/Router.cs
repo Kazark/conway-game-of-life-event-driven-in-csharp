@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GameOfLife.EventInfrastructure
 {
-    public class Router
+    public class Router : IConsume<Event>
     {
         private readonly Dictionary<Type, Action<Event>> _registry;
 
@@ -20,6 +20,16 @@ namespace GameOfLife.EventInfrastructure
         public void InvokeHandler(Event eventData)
         {
             _registry[eventData.GetType()](eventData);
+        }
+
+        public void Consume(Event eventData)
+        {
+            InvokeHandler(eventData);
+        }
+
+        public void RegisterHandlerForType(object instance, Type genericParameterType)
+        {
+            GetType().GetMethod("RegisterHandler").Invoke(instance);
         }
     }
 }
