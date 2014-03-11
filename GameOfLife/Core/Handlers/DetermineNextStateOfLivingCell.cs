@@ -17,7 +17,20 @@ namespace GameOfLife.Core.Handlers
 
         public void Consume(LivingNeighborsOfLiveCellCounted eventData)
         {
-            throw new System.NotImplementedException();
+            if (eventData.livingNeighbors == 3 || eventData.livingNeighbors == 2)
+            {
+                _cellLivedChannel.Consume(new CellLived
+                {
+                    location = eventData.position
+                });
+            }
+            else
+            {
+                _cellDiedChannel.Consume(new CellDied
+                {
+                    location = eventData.position
+                });
+            }
         }
     }
 }
