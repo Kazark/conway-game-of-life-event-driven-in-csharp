@@ -19,11 +19,17 @@ namespace GameOfLife.Core.Handlers
         {
             if (eventData.livingNeighbors == 3)
             {
-                _cellLivedChannel.Consume(new CellLived());
+                _cellLivedChannel.Consume(new CellLived
+                {
+                    location = eventData.position
+                });
             }
             else
             {
-                _cellDiedChannel.Consume(new CellDied());
+                _cellDiedChannel.Consume(new CellDied
+                {
+                    location = eventData.position
+                });
             }
         }
     }

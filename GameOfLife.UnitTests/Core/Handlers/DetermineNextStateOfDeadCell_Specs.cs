@@ -1,4 +1,5 @@
-﻿using GameOfLife.Core.Events;
+﻿using GameOfLife.Core;
+using GameOfLife.Core.Events;
 using GameOfLife.Core.Handlers;
 using NSpec;
 
@@ -49,10 +50,37 @@ namespace GameOfLife.UnitTests.Core.Handlers
 
         void it_publishes_position_of_the_cell_if_it_stays_dead()
         {
+            var eventData = new LivingNeighborsOfDeadCellCounted
+            {
+                position = new PositionInGrid
+                {
+                    column = 2,
+                    row = 3
+                }
+            };
+
+            _subject.Consume(eventData);
+
+            _cellDiedChannel.HandledEvents[0].location.column.should_be(eventData.position.column);
+            _cellDiedChannel.HandledEvents[0].location.row.should_be(eventData.position.row);
         }
 
         void it_publishes_position_of_the_cell_if_it_comes_to_life()
         {
+            var eventData = new LivingNeighborsOfDeadCellCounted
+            {
+                livingNeighbors = 3,
+                position = new PositionInGrid
+                {
+                    column = 2,
+                    row = 3
+                }
+            };
+
+            _subject.Consume(eventData);
+
+            _cellLivedChannel.HandledEvents[0].location.column.should_be(eventData.position.column);
+            _cellLivedChannel.HandledEvents[0].location.row.should_be(eventData.position.row);
         }
     }
 }
