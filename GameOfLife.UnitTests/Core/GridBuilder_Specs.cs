@@ -18,9 +18,9 @@ namespace GameOfLife.UnitTests.Core
 
         void it_should_publish_OneGenerationOfCellStatesAggregated_event_once_it_has_all_the_data_to_build_the_grid()
         {
-            MarkFourCellsAlive();
+            MarkFourCells();
             _channel.HandledEvents.Count.should_be(1);
-            MarkFourCellsDead();
+            MarkFourCells();
             _channel.HandledEvents.Count.should_be(2);
         }
 
@@ -30,20 +30,22 @@ namespace GameOfLife.UnitTests.Core
             _channel.HandledEvents.Count.should_be(0);
         }
 
-        void MarkFourCellsAlive()
+        void it_should_build_a_grid()
         {
-            _subject.MarkCellAliveAt(new PositionInGrid());
-            _subject.MarkCellAliveAt(new PositionInGrid());
-            _subject.MarkCellAliveAt(new PositionInGrid());
-            _subject.MarkCellAliveAt(new PositionInGrid());
+            MarkFourCells();
+            var grid = _channel.HandledEvents[0].grid;
+            grid.CellAt(0, 0).value.should_be(true);
+            grid.CellAt(0, 1).value.should_be(true);
+            grid.CellAt(1, 0).value.should_be(false);
+            grid.CellAt(1, 1).value.should_be(false);
         }
 
-        void MarkFourCellsDead()
+        void MarkFourCells()
         {
-            _subject.MarkCellDeadAt(new PositionInGrid());
-            _subject.MarkCellDeadAt(new PositionInGrid());
-            _subject.MarkCellDeadAt(new PositionInGrid());
-            _subject.MarkCellDeadAt(new PositionInGrid());
+            _subject.MarkCellAliveAt(new PositionInGrid { row = 0, column = 0 });
+            _subject.MarkCellDeadAt(new PositionInGrid { row = 1, column = 0 });
+            _subject.MarkCellDeadAt(new PositionInGrid { row = 1, column = 1 });
+            _subject.MarkCellAliveAt(new PositionInGrid { row = 0, column = 1 });
         }
 
         void MarkThreeCells()
