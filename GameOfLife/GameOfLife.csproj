@@ -43,8 +43,10 @@
     <Compile Include="Core\Cell.cs" />
     <Compile Include="Core\Events\LivingNeighborsOfDeadCellCounted.cs" />
     <Compile Include="Core\Events\LivingNeighborsOfLiveCellCounted.cs" />
+    <Compile Include="Core\GridBuilder.cs" />
     <Compile Include="Core\Handlers\CountLivingNeighbors.cs" />
     <Compile Include="Core\Events\GenerationComputed.cs" />
+    <Compile Include="Core\Events\OneGenerationOfCellStatesAggregated.cs" />
     <Compile Include="Core\Handlers\DetermineNextStateOfDeadCell.cs" />
     <Compile Include="Core\Handlers\DetermineNextStateOfLivingCell.cs" />
     <Compile Include="EventInfrastructure\Channel.cs" />
