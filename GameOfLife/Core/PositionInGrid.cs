@@ -7,6 +7,11 @@ namespace GameOfLife.Core
         public int row { get; set; }
         public int column { get; set; }
 
+        public int ToScalarForGridOfSize(int size)
+        {
+            return row*size + column;
+        }
+
         public PositionInGrid NorthernNeighbor()
         {
             return new PositionInGrid { column = column, row = row - 1 };

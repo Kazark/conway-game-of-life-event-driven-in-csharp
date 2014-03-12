@@ -33,16 +33,20 @@ namespace GameOfLife.Core
 
         public Cell<T> CellAt(int row, int column)
         {
-            if (row < 0 || row >= Size || column < 0 || column >= Size)
+            return CellAt(new PositionInGrid
             {
-                return new Cell<T>(this, null, default(T));
-            }
-            return _data[row*Size+column];
+                column = column,
+                row = row
+            });
         }
 
         public Cell<T> CellAt(PositionInGrid position)
         {
-            return CellAt(position.row, position.column);
+            if (position.row < 0 || position.row >= Size || position.column < 0 || position.column >= Size)
+            {
+                return new Cell<T>(this, null, default(T));
+            }
+            return _data[position.ToScalarForGridOfSize(Size)];
         }
     }
 }

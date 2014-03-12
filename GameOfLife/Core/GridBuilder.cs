@@ -31,14 +31,14 @@ namespace GameOfLife.Core
         public void MarkCellDeadAt(PositionInGrid position)
         {
             _count++;
-            _cells[position.row * _size + position.column] = false;
+            _cells[position.ToScalarForGridOfSize(_size)] = false;
             PublishAndResetIfNecessary();
         }
 
         public void MarkCellAliveAt(PositionInGrid position)
         {
             _count++;
-            _cells[position.row * _size + position.column] = true;
+            _cells[position.ToScalarForGridOfSize(_size)] = true;
             PublishAndResetIfNecessary();
         }
 
