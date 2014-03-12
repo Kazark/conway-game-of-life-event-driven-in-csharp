@@ -18,24 +18,39 @@ namespace GameOfLife.UnitTests.Core
 
         void it_should_publish_OneGenerationOfCellStatesAggregated_event_once_it_has_all_the_data_to_build_the_grid()
         {
-            _subject.MarkCellDeadAt(new PositionInGrid());
-            _subject.MarkCellAliveAt(new PositionInGrid());
-            _subject.MarkCellAliveAt(new PositionInGrid());
-            _subject.MarkCellDeadAt(new PositionInGrid());
+            MarkFourCellsAlive();
             _channel.HandledEvents.Count.should_be(1);
-            _subject.MarkCellDeadAt(new PositionInGrid());
-            _subject.MarkCellAliveAt(new PositionInGrid());
-            _subject.MarkCellAliveAt(new PositionInGrid());
-            _subject.MarkCellDeadAt(new PositionInGrid());
+            MarkFourCellsDead();
             _channel.HandledEvents.Count.should_be(2);
         }
 
         void it_should_not_publish_before_it_has_all_the_data_to_build_the_grid()
         {
+            MarkThreeCells();
+            _channel.HandledEvents.Count.should_be(0);
+        }
+
+        void MarkFourCellsAlive()
+        {
+            _subject.MarkCellAliveAt(new PositionInGrid());
+            _subject.MarkCellAliveAt(new PositionInGrid());
+            _subject.MarkCellAliveAt(new PositionInGrid());
+            _subject.MarkCellAliveAt(new PositionInGrid());
+        }
+
+        void MarkFourCellsDead()
+        {
+            _subject.MarkCellDeadAt(new PositionInGrid());
+            _subject.MarkCellDeadAt(new PositionInGrid());
+            _subject.MarkCellDeadAt(new PositionInGrid());
+            _subject.MarkCellDeadAt(new PositionInGrid());
+        }
+
+        void MarkThreeCells()
+        {
             _subject.MarkCellDeadAt(new PositionInGrid());
             _subject.MarkCellAliveAt(new PositionInGrid());
             _subject.MarkCellDeadAt(new PositionInGrid());
-            _channel.HandledEvents.Count.should_be(0);
         }
     }
 }
