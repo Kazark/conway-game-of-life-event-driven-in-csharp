@@ -17,6 +17,11 @@ namespace GameOfLife.Core
             return new PositionInGrid { column = scalar % size, row = scalar / size };
         }
 
+        public bool IsOutOfBoundsForGridOfSize(int size)
+        {
+            return row < 0 || row >= size || column < 0 || column >= size;
+        }
+
         public PositionInGrid NorthernNeighbor()
         {
             return new PositionInGrid { column = column, row = row - 1 };

@@ -42,7 +42,7 @@ namespace GameOfLife.Core
 
         public Cell<T> CellAt(PositionInGrid position)
         {
-            if (position.row < 0 || position.row >= Size || position.column < 0 || position.column >= Size)
+            if (position.IsOutOfBoundsForGridOfSize(Size))
             {
                 return new Cell<T>(this, null, default(T));
             }
