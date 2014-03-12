@@ -36,6 +36,7 @@ namespace GameOfLife.Core
         {
             if (_count == _size)
             {
+                _count = 0;
                 _channel.Consume(new OneGenerationOfCellStatesAggregated());
             }
         }

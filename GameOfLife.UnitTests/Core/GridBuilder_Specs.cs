@@ -23,6 +23,11 @@ namespace GameOfLife.UnitTests.Core
             _subject.MarkCellAliveAt(new PositionInGrid());
             _subject.MarkCellDeadAt(new PositionInGrid());
             _channel.HandledEvents.Count.should_be(1);
+            _subject.MarkCellDeadAt(new PositionInGrid());
+            _subject.MarkCellAliveAt(new PositionInGrid());
+            _subject.MarkCellAliveAt(new PositionInGrid());
+            _subject.MarkCellDeadAt(new PositionInGrid());
+            _channel.HandledEvents.Count.should_be(2);
         }
 
         void it_should_not_publish_before_it_has_all_the_data_to_build_the_grid()
