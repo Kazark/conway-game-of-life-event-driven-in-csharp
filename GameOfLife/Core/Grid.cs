@@ -13,7 +13,7 @@ namespace GameOfLife.Core
         public Grid(List<T> data)
         {
             _size = Convert.ToInt32(Math.Sqrt(data.Count));
-            _data = data.Select((v,i) => new Cell<T>(this, new PositionInGrid { column = i % Size, row = i / Size}, v)).ToList();
+            _data = data.Select((v,i) => new Cell<T>(this, PositionInGrid.FromScalarForGridOfSize(i, Size), v)).ToList();
         }
 
         public int Size

@@ -12,6 +12,11 @@ namespace GameOfLife.Core
             return row*size + column;
         }
 
+        public static PositionInGrid FromScalarForGridOfSize(int scalar, int size)
+        {
+            return new PositionInGrid { column = scalar % size, row = scalar / size };
+        }
+
         public PositionInGrid NorthernNeighbor()
         {
             return new PositionInGrid { column = column, row = row - 1 };
