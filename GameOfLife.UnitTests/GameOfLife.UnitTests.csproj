@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Core\Cell_Specs.cs" />
     <Compile Include="Core\GridBuilder_Specs.cs" />
+    <Compile Include="Core\Handlers\CellStateAggregator_Specs.cs" />
     <Compile Include="Core\Handlers\DetermineNextStateOfLivingCell_Specs.cs" />
     <Compile Include="Core\Handlers\DetermineNextStateOfDeadCell_Specs.cs" />
     <Compile Include="Core\Handlers\LivingNeighborsCounter_Specs.cs" />

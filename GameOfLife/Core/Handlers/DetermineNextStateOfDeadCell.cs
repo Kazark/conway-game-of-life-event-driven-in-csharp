@@ -21,14 +21,14 @@ namespace GameOfLife.Core.Handlers
             {
                 _cellLivedChannel.Consume(new CellLived
                 {
-                    location = eventData.position
+                    position = eventData.position
                 });
             }
             else
             {
                 _cellDiedChannel.Consume(new CellDied
                 {
-                    location = eventData.position
+                    position = eventData.position
                 });
             }
         }

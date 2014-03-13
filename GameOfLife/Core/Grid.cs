@@ -13,10 +13,10 @@ namespace GameOfLife.Core
         public Grid(List<T> data)
         {
             _size = Convert.ToInt32(Math.Sqrt(data.Count));
-            _data = data.Select((v,i) => new Cell<T>(this, PositionInGrid.FromScalarForGridOfSize(i, Size), v)).ToList();
+            _data = data.Select((v,i) => new Cell<T>(this, PositionInGrid.FromScalarForGridOfSize(i, size), v)).ToList();
         }
 
-        public int Size
+        public int size
         {
             get { return _size; }
         }
@@ -42,11 +42,11 @@ namespace GameOfLife.Core
 
         public Cell<T> CellAt(PositionInGrid position)
         {
-            if (position.IsOutOfBoundsForGridOfSize(Size))
+            if (position.IsOutOfBoundsForGridOfSize(size))
             {
                 return new Cell<T>(this, null, default(T));
             }
-            return _data[position.ToScalarForGridOfSize(Size)];
+            return _data[position.ToScalarForGridOfSize(size)];
         }
     }
 }

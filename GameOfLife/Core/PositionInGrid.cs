@@ -4,6 +4,18 @@ namespace GameOfLife.Core
 {
     public class PositionInGrid
     {
+        public PositionInGrid()
+        {
+            row = 0;
+            column = 0;
+        }
+
+        public PositionInGrid(int row, int column)
+        {
+            this.row = row;
+            this.column = column;
+        }
+
         public int row { get; set; }
         public int column { get; set; }
 

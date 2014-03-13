@@ -61,8 +61,8 @@ namespace GameOfLife.UnitTests.Core.Handlers
 
             _subject.Consume(eventData);
 
-            _cellDiedChannel.HandledEvents[0].location.column.should_be(eventData.position.column);
-            _cellDiedChannel.HandledEvents[0].location.row.should_be(eventData.position.row);
+            _cellDiedChannel.HandledEvents[0].position.column.should_be(eventData.position.column);
+            _cellDiedChannel.HandledEvents[0].position.row.should_be(eventData.position.row);
         }
 
         void it_publishes_position_of_the_cell_if_it_comes_to_life()
@@ -79,8 +79,8 @@ namespace GameOfLife.UnitTests.Core.Handlers
 
             _subject.Consume(eventData);
 
-            _cellLivedChannel.HandledEvents[0].location.column.should_be(eventData.position.column);
-            _cellLivedChannel.HandledEvents[0].location.row.should_be(eventData.position.row);
+            _cellLivedChannel.HandledEvents[0].position.column.should_be(eventData.position.column);
+            _cellLivedChannel.HandledEvents[0].position.row.should_be(eventData.position.row);
         }
     }
 }

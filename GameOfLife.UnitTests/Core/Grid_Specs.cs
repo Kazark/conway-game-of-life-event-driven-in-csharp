@@ -21,7 +21,7 @@ namespace GameOfLife.UnitTests.Core
 
         void it_has_size_of_the_square_root_of_the_length_of_the_intialization_list()
         {
-            _subject.Size.should_be(3);
+            _subject.size.should_be(3);
         }
 
         void it_can_be_iterated_over()
