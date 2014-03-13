@@ -27,9 +27,9 @@ namespace GameOfLife.UnitTests
             return this;
         }
 
-        public GenerationComputed Build()
+        public GenerationCompleted Build()
         {
-            return new GenerationComputed
+            return new GenerationCompleted
             {
                 grid = new Grid<bool>(_data)
             };

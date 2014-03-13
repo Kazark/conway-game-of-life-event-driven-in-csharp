@@ -4,7 +4,7 @@ using GameOfLife.EventInfrastructure;
 
 namespace GameOfLife.Core.Handlers
 {
-    public class CountLivingNeighbors : IConsume<GenerationComputed>
+    public class CountLivingNeighbors : IConsume<GenerationCompleted>
     {
         private readonly IConsume<LivingNeighborsOfLiveCellCounted> _liveCellEventHandler;
         private readonly IConsume<LivingNeighborsOfDeadCellCounted> _deadCellEventHandler;
@@ -16,7 +16,7 @@ namespace GameOfLife.Core.Handlers
             _deadCellEventHandler = deadCellEventHandler;
         }
 
-        public void Consume(GenerationComputed eventData)
+        public void Consume(GenerationCompleted eventData)
         {
             foreach (var cell in eventData.grid)
             {

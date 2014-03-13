@@ -47,7 +47,7 @@
     <Compile Include="Core\GridBuilder.cs" />
     <Compile Include="Core\Handlers\CellStateAggregator.cs" />
     <Compile Include="Core\Handlers\CountLivingNeighbors.cs" />
-    <Compile Include="Core\Events\GenerationComputed.cs" />
+    <Compile Include="Core\Events\GenerationCompleted.cs" />
     <Compile Include="Core\Events\OneGenerationOfCellStatesAggregated.cs" />
     <Compile Include="Core\Handlers\DetermineNextStateOfDeadCell.cs" />
     <Compile Include="Core\Handlers\DetermineNextStateOfLivingCell.cs" />
