@@ -1,6 +1,6 @@
 ﻿namespace GameOfLife.EventInfrastructure
 {
-    public interface IChannel
+    public interface InputChannel
     {
         void Enqueue(Event eventData);
     }

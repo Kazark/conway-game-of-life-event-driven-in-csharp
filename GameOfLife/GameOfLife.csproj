@@ -52,14 +52,16 @@
     <Compile Include="Core\Handlers\DetermineNextStateOfDeadCell.cs" />
     <Compile Include="Core\Handlers\DetermineNextStateOfLivingCell.cs" />
     <Compile Include="EventInfrastructure\Channel.cs" />
+    <Compile Include="EventInfrastructure\DeliverEventsFromChannelUntilEmpty.cs" />
     <Compile Include="EventInfrastructure\Event.cs" />
     <Compile Include="Core\Events\CellDied.cs" />
     <Compile Include="Core\Events\CellLived.cs" />
     <Compile Include="Core\Grid.cs" />
     <Compile Include="Core\IGrid.cs" />
     <Compile Include="Core\PositionInGrid.cs" />
-    <Compile Include="EventInfrastructure\IChannel.cs" />
+    <Compile Include="EventInfrastructure\InputChannel.cs" />
     <Compile Include="EventInfrastructure\IConsume.cs" />
+    <Compile Include="EventInfrastructure\OutputChannel.cs" />
     <Compile Include="EventInfrastructure\Router.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
