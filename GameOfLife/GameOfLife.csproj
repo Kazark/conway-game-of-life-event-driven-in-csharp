@@ -58,6 +58,7 @@
     <Compile Include="Core\Grid.cs" />
     <Compile Include="Core\IGrid.cs" />
     <Compile Include="Core\PositionInGrid.cs" />
+    <Compile Include="EventInfrastructure\IChannel.cs" />
     <Compile Include="EventInfrastructure\IConsume.cs" />
     <Compile Include="EventInfrastructure\Router.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,7 +2,7 @@
 
 namespace GameOfLife.EventInfrastructure
 {
-    public class Channel : IConsume<Event>
+    public class Channel : IConsume<Event>, IChannel
     {
         private readonly IConsume<Event> _handler;
         private readonly Queue<Event> _eventQueue = new Queue<Event>();
@@ -18,6 +18,11 @@ namespace GameOfLife.EventInfrastructure
         }
 
         public void Consume(Event eventData)
+        {
+            Enqueue(eventData);
+        }
+
+        public void Enqueue(Event eventData)
         {
             _eventQueue.Enqueue(eventData);
         }
