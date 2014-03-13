@@ -56,11 +56,7 @@ namespace GameOfLife.UnitTests.Core
 
         void it_is_able_to_retrieved_cells_by_position_in_grid()
         {
-            var position = new PositionInGrid
-            {
-                column = 2,
-                row = 1
-            };
+            var position = new PositionInGrid(1, 2);
             var cell = _subject.CellAt(position);
             cell.value.should_be(6);
             cell.position.column.should_be(position.column);
@@ -69,11 +65,7 @@ namespace GameOfLife.UnitTests.Core
 
         void it_is_able_to_retrieve_out_of_bounds_cells_by_position_in_grid()
         {
-            var position = new PositionInGrid
-            {
-                column = 4,
-                row = -1
-            };
+            var position = new PositionInGrid(1, 4);
             _subject.CellAt(position).value.should_be(default(int));
         }
     }

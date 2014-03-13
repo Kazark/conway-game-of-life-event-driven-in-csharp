@@ -16,8 +16,8 @@ namespace GameOfLife.Core
             this.column = column;
         }
 
-        public int row { get; set; }
-        public int column { get; set; }
+        public int row { get; private set; }
+        public int column { get; private set; }
 
         public int ToScalarForGridOfSize(int size)
         {
@@ -26,7 +26,7 @@ namespace GameOfLife.Core
 
         public static PositionInGrid FromScalarForGridOfSize(int scalar, int size)
         {
-            return new PositionInGrid { column = scalar % size, row = scalar / size };
+            return new PositionInGrid(scalar / size, scalar % size);
         }
 
         public bool IsOutOfBoundsForGridOfSize(int size)
@@ -36,42 +36,42 @@ namespace GameOfLife.Core
 
         public PositionInGrid NorthernNeighbor()
         {
-            return new PositionInGrid { column = column, row = row - 1 };
+            return new PositionInGrid(row - 1, column);
         }
 
         public PositionInGrid NorthwesternNeighbor()
         {
-            return new PositionInGrid { column = column - 1, row = row - 1 };
+            return new PositionInGrid(row - 1, column - 1);
         }
 
         public PositionInGrid WesternNeighbor()
         {
-            return new PositionInGrid { column = column - 1, row = row };
+            return new PositionInGrid(row, column - 1);
         }
 
         public PositionInGrid SouthwesternNeighbor()
         {
-            return new PositionInGrid { column = column - 1, row = row + 1 };
+            return new PositionInGrid(row + 1, column - 1);
         }
 
         public PositionInGrid SouthernNeighbor()
         {
-            return new PositionInGrid { column = column, row = row + 1 };
+            return new PositionInGrid(row + 1, column);
         }
 
         public PositionInGrid SoutheasternNeighbor()
         {
-            return new PositionInGrid { column = column + 1, row = row + 1 };
+            return new PositionInGrid(row + 1, column + 1);
         }
 
         public PositionInGrid EasternNeighbor()
         {
-            return new PositionInGrid { column = column + 1, row = row };
+            return new PositionInGrid(row, column + 1);
         }
 
         public PositionInGrid NortheasternNeighbor()
         {
-            return new PositionInGrid { column = column + 1, row = row - 1 };
+            return new PositionInGrid(row - 1, column + 1);
         }
 
         public IEnumerable<PositionInGrid> Neighbors()

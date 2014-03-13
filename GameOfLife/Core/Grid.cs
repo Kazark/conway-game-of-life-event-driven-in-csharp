@@ -33,11 +33,7 @@ namespace GameOfLife.Core
 
         public Cell<T> CellAt(int row, int column)
         {
-            return CellAt(new PositionInGrid
-            {
-                column = column,
-                row = row
-            });
+            return CellAt(new PositionInGrid(row, column));
         }
 
         public Cell<T> CellAt(PositionInGrid position)

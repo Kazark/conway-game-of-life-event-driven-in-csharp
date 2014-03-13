@@ -20,10 +20,10 @@ namespace GameOfLife.UnitTests.Core
 
         void it_should_build_a_grid()
         {
-            _subject.MarkCellAliveAt(new PositionInGrid { row = 0, column = 0 });
-            _subject.MarkCellDeadAt(new PositionInGrid { row = 1, column = 0 });
-            _subject.MarkCellDeadAt(new PositionInGrid { row = 1, column = 1 });
-            _subject.MarkCellAliveAt(new PositionInGrid { row = 0, column = 1 });
+            _subject.MarkCellAliveAt(new PositionInGrid(0, 0));
+            _subject.MarkCellDeadAt(new PositionInGrid(1, 0));
+            _subject.MarkCellDeadAt(new PositionInGrid(1, 1));
+            _subject.MarkCellAliveAt(new PositionInGrid(0, 1));
             var grid = _subject.Build();
             grid.CellAt(0, 0).value.should_be(true);
             grid.CellAt(0, 1).value.should_be(true);

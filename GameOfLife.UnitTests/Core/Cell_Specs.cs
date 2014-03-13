@@ -7,11 +7,7 @@ namespace GameOfLife.UnitTests.Core
     class Cell_Specs : nspec
     {
         private Cell<int> _subject;
-        private static readonly PositionInGrid Position = new PositionInGrid
-            {
-                column = 1,
-                row = 3
-            };
+        private static readonly PositionInGrid Position = new PositionInGrid(3, 1);
         private const int Value = 2;
 
         void before_each()

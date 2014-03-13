@@ -10,11 +10,25 @@ namespace GameOfLife.UnitTests.Core
 
         void before_each()
         {
-            _subject = new PositionInGrid
-                {
-                    row = 2,
-                    column = 0
-                };
+            _subject = new PositionInGrid(2, 0);
+        }
+
+        void it_knows_how_to_convert_itself_to_scalar_for_a_given_grid_size()
+        {
+            _subject.ToScalarForGridOfSize(3).should_be(6);
+        }
+
+        void it_knows_if_it_is_out_of_bounds_for_a_given_grid_size()
+        {
+            _subject.IsOutOfBoundsForGridOfSize(1).should_be(true);
+            _subject.IsOutOfBoundsForGridOfSize(3).should_be(false);
+        }
+
+        void it_knows_how_to_instantiate_itself_from_a_scalar_and_grid_size()
+        {
+            var position = PositionInGrid.FromScalarForGridOfSize(9, 4);
+            position.row.should_be(2);
+            position.column.should_be(1);
         }
 
         void it_knows_the_position_of_its_northern_neighbor()

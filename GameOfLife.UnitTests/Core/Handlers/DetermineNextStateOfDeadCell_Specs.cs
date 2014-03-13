@@ -52,11 +52,7 @@ namespace GameOfLife.UnitTests.Core.Handlers
         {
             var eventData = new LivingNeighborsOfDeadCellCounted
             {
-                position = new PositionInGrid
-                {
-                    column = 2,
-                    row = 3
-                }
+                position = new PositionInGrid(3, 2)
             };
 
             _subject.Consume(eventData);
@@ -70,11 +66,7 @@ namespace GameOfLife.UnitTests.Core.Handlers
             var eventData = new LivingNeighborsOfDeadCellCounted
             {
                 livingNeighbors = 3,
-                position = new PositionInGrid
-                {
-                    column = 2,
-                    row = 3
-                }
+                position = new PositionInGrid(3, 2)
             };
 
             _subject.Consume(eventData);
