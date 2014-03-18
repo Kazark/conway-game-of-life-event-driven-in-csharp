@@ -8,5 +8,13 @@
         {
             _channel = channel;
         }
+
+        public void Execute()
+        {
+            while (_channel.HasMore())
+            {
+                _channel.DeliverOne();
+            }
+        }
     }
 }
