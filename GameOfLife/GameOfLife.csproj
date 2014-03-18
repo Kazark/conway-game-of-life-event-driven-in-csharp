@@ -53,6 +53,7 @@
     <Compile Include="Core\Handlers\DetermineNextStateOfDeadCell.cs" />
     <Compile Include="Core\Handlers\DetermineNextStateOfLivingCell.cs" />
     <Compile Include="Core\Handlers\HasGameReachedStatis.cs" />
+    <Compile Include="Core\Handlers\IsGameOscillating.cs" />
     <Compile Include="EventInfrastructure\Channel.cs" />
     <Compile Include="EventInfrastructure\DeliverEventsFromChannelUntilEmpty.cs" />
     <Compile Include="EventInfrastructure\Event.cs" />
