@@ -2,7 +2,7 @@
 
 namespace GameOfLife.EventInfrastructure
 {
-    public class Channel : IConsume<Event>, InputChannel, OutputChannel
+    public class Channel : IConsume<Event>, IEnqueueEventsOnChannel, IDeliverEventsFromChannel
     {
         private readonly IConsume<Event> _handler;
         private readonly Queue<Event> _eventQueue = new Queue<Event>();

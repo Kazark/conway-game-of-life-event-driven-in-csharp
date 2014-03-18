@@ -2,9 +2,9 @@
 {
     public class DeliverEventsFromChannelUntilEmpty
     {
-        private readonly OutputChannel _channel;
+        private readonly IDeliverEventsFromChannel _channel;
 
-        public DeliverEventsFromChannelUntilEmpty(OutputChannel channel)
+        public DeliverEventsFromChannelUntilEmpty(IDeliverEventsFromChannel channel)
         {
             _channel = channel;
         }

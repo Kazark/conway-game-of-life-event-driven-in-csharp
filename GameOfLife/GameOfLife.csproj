@@ -44,6 +44,7 @@
     <Compile Include="Core\Events\GameInitiated.cs" />
     <Compile Include="Core\Events\LivingNeighborsOfDeadCellCounted.cs" />
     <Compile Include="Core\Events\LivingNeighborsOfLiveCellCounted.cs" />
+    <Compile Include="Core\Events\StatisReached.cs" />
     <Compile Include="Core\GridBuilder.cs" />
     <Compile Include="Core\Handlers\CellStateAggregator.cs" />
     <Compile Include="Core\Handlers\CountLivingNeighbors.cs" />
@@ -60,9 +61,9 @@
     <Compile Include="Core\Grid.cs" />
     <Compile Include="Core\IGrid.cs" />
     <Compile Include="Core\PositionInGrid.cs" />
-    <Compile Include="EventInfrastructure\InputChannel.cs" />
+    <Compile Include="EventInfrastructure\IEnqueueEventsOnChannel.cs" />
     <Compile Include="EventInfrastructure\IConsume.cs" />
-    <Compile Include="EventInfrastructure\OutputChannel.cs" />
+    <Compile Include="EventInfrastructure\IDeliverEventsFromChannel.cs" />
     <Compile Include="EventInfrastructure\Router.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

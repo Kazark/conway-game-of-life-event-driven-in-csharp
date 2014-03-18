@@ -1,6 +1,6 @@
 ﻿namespace GameOfLife.EventInfrastructure
 {
-    public interface OutputChannel
+    public interface IDeliverEventsFromChannel
     {
         bool HasMore();
         void DeliverOne();
