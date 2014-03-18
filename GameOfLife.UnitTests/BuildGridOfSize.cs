@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using GameOfLife.Core;
-using GameOfLife.Core.Events;
 
 namespace GameOfLife.UnitTests
 {
-    class BuildGenerationComputedEventForGridOfSize
+    class BuildGridOfSize
     {
         private readonly List<bool> _data;
 
-        public BuildGenerationComputedEventForGridOfSize(int size)
+        public BuildGridOfSize(int size)
         {
             var length = size*size;
             _data = new List<bool>(length);
@@ -18,7 +17,7 @@ namespace GameOfLife.UnitTests
             }
         }
 
-        public BuildGenerationComputedEventForGridOfSize WithNLivingCells(int numberLiving)
+        public BuildGridOfSize WithNLivingCells(int numberLiving)
         {
             for (int i = 0; i < numberLiving; i++)
             {
@@ -27,12 +26,9 @@ namespace GameOfLife.UnitTests
             return this;
         }
 
-        public GenerationCompleted Build()
+        public Grid<bool> Build()
         {
-            return new GenerationCompleted
-            {
-                grid = new Grid<bool>(_data)
-            };
+            return new Grid<bool>(_data);
         }
     }
 }

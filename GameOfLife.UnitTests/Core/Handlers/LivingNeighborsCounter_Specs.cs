@@ -19,11 +19,14 @@ namespace GameOfLife.UnitTests.Core.Handlers
 
         void it_publishes_an_event_for_each_cell_in_the_grid()
         {
-            var eventData = new BuildGenerationComputedEventForGridOfSize(3)
+            var grid = new BuildGridOfSize(3)
                 .WithNLivingCells(5)
                 .Build();
 
-            _subject.Consume(eventData);
+            _subject.Consume(new GenerationCompleted
+            {
+                grid = grid
+            });
 
             _liveCellEventHandler.HandledEvents.Count.should_be(5);
             _deadCellEventHandler.HandledEvents.Count.should_be(4);

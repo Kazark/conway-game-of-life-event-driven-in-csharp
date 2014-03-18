@@ -1,6 +1,30 @@
-﻿namespace GameOfLife.Core.Handlers
+﻿using System.Collections.Generic;
+using System.Linq;
+using GameOfLife.Core.Events;
+using GameOfLife.EventInfrastructure;
+
+namespace GameOfLife.Core.Handlers
 {
-    public class HasGameReachedStatis
+    public class HasGameReachedStatis :
+        IConsume<GameInitiated>,
+        IConsume<OneGenerationOfCellStatesAggregated>
     {
+        private readonly IEnqueueEventsOnChannel _channel;
+        private List<bool> _previousState;
+
+        public HasGameReachedStatis(IEnqueueEventsOnChannel channel)
+        {
+            _channel = channel;
+        }
+
+        public void Consume(OneGenerationOfCellStatesAggregated eventData)
+        {
+            _channel.Enqueue(new StatisReached());
+        }
+
+        public void Consume(GameInitiated eventData)
+        {
+            _previousState = eventData.grid.Select(cell => cell.value).ToList();
+        }
     }
 }

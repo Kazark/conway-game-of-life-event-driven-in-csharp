@@ -60,9 +60,10 @@
     <Compile Include="Core\Grid_Specs.cs" />
     <Compile Include="Core\PositionInGrid_Specs.cs" />
     <Compile Include="EventInfrastructure\DeliverEventsFromChannelUntilEmpty_Specs.cs" />
+    <Compile Include="EventInfrastructure\EnqueuerMock.cs" />
     <Compile Include="EventInfrastructure\Router_Specs.cs" />
     <Compile Include="DebuggerShim.cs" />
-    <Compile Include="BuildGenerationComputedEventForGridOfSize.cs" />
+    <Compile Include="BuildGridOfSize.cs" />
     <Compile Include="GenericHandlerForTesting.cs" />
     <Compile Include="GridForTesting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
