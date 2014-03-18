@@ -28,7 +28,17 @@ namespace GameOfLife.UnitTests.Core.Handlers
                 grid = new BuildGridOfSize(GridSize).Build()
             });
 
-            _channelMock.LastHandledEventWasOfType<StatisReached>().should_be(true);
+            _channelMock.LastEnqueuedEventWasOfType<StatisReached>().should_be_true();
+        }
+
+        void it_does_not_publish_StatisReached_event_when_original_game_has_not_reached_equilibrium()
+        {
+            _subject.Consume(new OneGenerationOfCellStatesAggregated
+            {
+                grid = new BuildGridOfSize(GridSize).WithNLivingCells(1).Build()
+            });
+
+            _channelMock.EnqueuedAnEvent().should_be_false();
         }
     }
 }

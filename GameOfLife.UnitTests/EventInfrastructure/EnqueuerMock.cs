@@ -13,9 +13,14 @@ namespace GameOfLife.UnitTests.EventInfrastructure
             _handledEvents.Add(eventData);
         }
 
-        public bool LastHandledEventWasOfType<T>()
+        public bool LastEnqueuedEventWasOfType<T>()
         {
             return _handledEvents.Last().GetType() == typeof(T);
+        }
+
+        public bool EnqueuedAnEvent()
+        {
+            return _handledEvents.Any();
         }
     }
 }

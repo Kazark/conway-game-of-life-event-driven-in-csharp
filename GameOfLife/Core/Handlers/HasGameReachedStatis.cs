@@ -19,7 +19,11 @@ namespace GameOfLife.Core.Handlers
 
         public void Consume(OneGenerationOfCellStatesAggregated eventData)
         {
-            _channel.Enqueue(new StatisReached());
+            var currentState = eventData.grid.Select(cell => cell.value).ToList();
+            if (currentState.SequenceEqual(_previousState))
+            {
+                _channel.Enqueue(new StatisReached());
+            }
         }
 
         public void Consume(GameInitiated eventData)
