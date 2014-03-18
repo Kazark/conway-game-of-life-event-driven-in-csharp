@@ -21,37 +21,45 @@ namespace GameOfLife.UnitTests.Core.Handlers
             });
         }
 
-        void it_publishes_StatisReached_event_when_original_game_is_in_equilibrium()
+        void ConsumeEventSameAsOriginalState()
         {
             _subject.Consume(new OneGenerationOfCellStatesAggregated
             {
                 grid = new BuildGridOfSize(GridSize).Build()
             });
+        }
 
+        void ConsumeEventOfSecondaryState()
+        {
+            _subject.Consume(new OneGenerationOfCellStatesAggregated
+            {
+                grid = new BuildGridOfSize(GridSize).WithNLivingCells(1).Build()
+            });
+        }
+
+        void it_publishes_StatisReached_event_when_original_game_is_in_equilibrium()
+        {
+            ConsumeEventSameAsOriginalState();
             _channelMock.LastEnqueuedEventWasOfType<StatisReached>().should_be_true();
         }
 
         void it_does_not_publish_StatisReached_event_when_original_game_has_not_reached_equilibrium()
         {
-            _subject.Consume(new OneGenerationOfCellStatesAggregated
-            {
-                grid = new BuildGridOfSize(GridSize).WithNLivingCells(1).Build()
-            });
+            ConsumeEventOfSecondaryState();
+            _channelMock.EnqueuedAnEvent().should_be_false();
+        }
 
+        void it_does_not_publish_StatisReached_event_when_original_game_is_in_loop()
+        {
+            ConsumeEventOfSecondaryState();
+            ConsumeEventSameAsOriginalState();
             _channelMock.EnqueuedAnEvent().should_be_false();
         }
 
         void it_publishes_StatisReached_event_when_the_game_has_reached_equilibrium()
         {
-            _subject.Consume(new OneGenerationOfCellStatesAggregated
-            {
-                grid = new BuildGridOfSize(GridSize).WithNLivingCells(1).Build()
-            });
-            _subject.Consume(new OneGenerationOfCellStatesAggregated
-            {
-                grid = new BuildGridOfSize(GridSize).WithNLivingCells(1).Build()
-            });
-
+            ConsumeEventOfSecondaryState();
+            ConsumeEventOfSecondaryState();
             _channelMock.LastEnqueuedEventWasOfType<StatisReached>().should_be_true();
         }
     }
