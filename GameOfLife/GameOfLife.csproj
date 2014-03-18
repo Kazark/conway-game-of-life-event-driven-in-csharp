@@ -51,6 +51,7 @@
     <Compile Include="Core\Events\OneGenerationOfCellStatesAggregated.cs" />
     <Compile Include="Core\Handlers\DetermineNextStateOfDeadCell.cs" />
     <Compile Include="Core\Handlers\DetermineNextStateOfLivingCell.cs" />
+    <Compile Include="Core\Handlers\HasGameReachedStatis.cs" />
     <Compile Include="EventInfrastructure\Channel.cs" />
     <Compile Include="EventInfrastructure\DeliverEventsFromChannelUntilEmpty.cs" />
     <Compile Include="EventInfrastructure\Event.cs" />
