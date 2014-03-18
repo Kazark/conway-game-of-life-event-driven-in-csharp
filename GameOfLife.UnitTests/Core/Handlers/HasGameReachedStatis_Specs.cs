@@ -53,6 +53,7 @@ namespace GameOfLife.UnitTests.Core.Handlers
         {
             ConsumeEventOfSecondaryState();
             ConsumeEventSameAsOriginalState();
+            ConsumeEventOfSecondaryState();
             _channelMock.EnqueuedAnEvent().should_be_false();
         }
 
