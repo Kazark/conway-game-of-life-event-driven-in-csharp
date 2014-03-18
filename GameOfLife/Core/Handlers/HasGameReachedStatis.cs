@@ -24,6 +24,7 @@ namespace GameOfLife.Core.Handlers
             {
                 _channel.Enqueue(new StatisReached());
             }
+            _previousState = currentState;
         }
 
         public void Consume(GameInitiated eventData)
