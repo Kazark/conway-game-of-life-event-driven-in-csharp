@@ -15,7 +15,7 @@ namespace GameOfLife.UnitTests.EventInfrastructure
 
         public bool LastEnqueuedEventWasOfType<T>()
         {
-            return _handledEvents.Last().GetType() == typeof(T);
+            return EnqueuedAnEvent() && _handledEvents.Last().GetType() == typeof(T);
         }
 
         public bool EnqueuedAnEvent()

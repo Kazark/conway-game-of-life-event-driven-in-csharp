@@ -3,9 +3,13 @@ using GameOfLife.EventInfrastructure;
 
 namespace GameOfLife.Core.Handlers
 {
-    public class IsGameOscillating : IConsume<StatisNotReached>, IConsume<OneGenerationOfCellStatesAggregated>
+    public class IsGameOscillating :
+        IConsume<GameInitiated>,
+        IConsume<OneGenerationOfCellStatesAggregated>,
+        IConsume<StatisNotReached>
     {
         private readonly IEnqueueEventsOnChannel _channel;
+        private bool _statisNotReached;
 
         public IsGameOscillating(IEnqueueEventsOnChannel channel)
         {
@@ -14,9 +18,18 @@ namespace GameOfLife.Core.Handlers
 
         public void Consume(StatisNotReached eventData)
         {
+            _statisNotReached = true;
         }
 
         public void Consume(OneGenerationOfCellStatesAggregated eventData)
+        {
+            if (_statisNotReached)
+            {
+                _channel.Enqueue(new GameIsNotOscillating());
+            }
+        }
+
+        public void Consume(GameInitiated eventData)
         {
         }
     }
