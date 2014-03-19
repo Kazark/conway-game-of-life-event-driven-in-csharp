@@ -37,16 +37,22 @@ namespace GameOfLife.UnitTests.Core.Handlers
             });
         }
 
-        void it_publishes_StatisReached_event_when_original_game_is_in_equilibrium()
+        void it_publishes_StatisReached_event_when_original_game_is_in_stasis()
         {
             ConsumeEventSameAsOriginalState();
             _channelMock.LastEnqueuedEventWasOfType<StatisReached>().should_be_true();
         }
 
-        void it_does_not_publish_StatisReached_event_when_original_game_has_not_reached_equilibrium()
+        void it_does_not_publish_StatisReached_event_when_original_game_has_not_reached_stasis()
         {
             ConsumeEventOfSecondaryState();
-            _channelMock.EnqueuedAnEvent().should_be_false();
+            _channelMock.EnqueuedAnEventOfType<StatisReached>().should_be_false();
+        }
+
+        void it_publishes_StatisNotReached_event_when_original_game_has_not_reached_stasis()
+        {
+            ConsumeEventOfSecondaryState();
+            _channelMock.LastEnqueuedEventWasOfType<StatisNotReached>().should_be_true();
         }
 
         void it_does_not_publish_StatisReached_event_when_original_game_is_in_loop()
@@ -54,10 +60,10 @@ namespace GameOfLife.UnitTests.Core.Handlers
             ConsumeEventOfSecondaryState();
             ConsumeEventSameAsOriginalState();
             ConsumeEventOfSecondaryState();
-            _channelMock.EnqueuedAnEvent().should_be_false();
+            _channelMock.EnqueuedAnEventOfType<StatisReached>().should_be_false();
         }
 
-        void it_publishes_StatisReached_event_when_the_game_has_reached_equilibrium()
+        void it_publishes_StatisReached_event_when_the_game_has_reached_stasis()
         {
             ConsumeEventOfSecondaryState();
             ConsumeEventOfSecondaryState();

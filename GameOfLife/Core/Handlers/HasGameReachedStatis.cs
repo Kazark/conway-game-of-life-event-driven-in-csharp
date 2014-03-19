@@ -24,6 +24,10 @@ namespace GameOfLife.Core.Handlers
             {
                 _channel.Enqueue(new StatisReached());
             }
+            else
+            {
+                _channel.Enqueue(new StatisNotReached());
+            }
             _previousState = currentState;
         }
 

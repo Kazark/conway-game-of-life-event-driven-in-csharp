@@ -22,5 +22,10 @@ namespace GameOfLife.UnitTests.EventInfrastructure
         {
             return _handledEvents.Any();
         }
+
+        public bool EnqueuedAnEventOfType<T>()
+        {
+            return _handledEvents.Any(e => e.GetType() == typeof(T));
+        }
     }
 }

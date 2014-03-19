@@ -44,6 +44,7 @@
     <Compile Include="Core\Events\GameInitiated.cs" />
     <Compile Include="Core\Events\LivingNeighborsOfDeadCellCounted.cs" />
     <Compile Include="Core\Events\LivingNeighborsOfLiveCellCounted.cs" />
+    <Compile Include="Core\Events\StatisNotReached.cs" />
     <Compile Include="Core\Events\StatisReached.cs" />
     <Compile Include="Core\GridBuilder.cs" />
     <Compile Include="Core\Handlers\CellStateAggregator.cs" />
