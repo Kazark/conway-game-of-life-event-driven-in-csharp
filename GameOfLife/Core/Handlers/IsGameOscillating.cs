@@ -21,9 +21,10 @@ namespace GameOfLife.Core.Handlers
         public void Consume(OneGenerationOfCellStatesAggregated eventData)
         {
             var newState = eventData.grid.AsListOfCellStates();
-            if (newState == _previousState)
+            if (newState.SequenceEqual(_previousState))
             {
                 _channel.Enqueue(new GameIsNotOscillating());
+                _channel.Enqueue(new StatisReached());
             }
             else
             {

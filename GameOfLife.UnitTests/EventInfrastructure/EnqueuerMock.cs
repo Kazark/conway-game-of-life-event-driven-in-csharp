@@ -28,7 +28,7 @@ namespace GameOfLife.UnitTests.EventInfrastructure
             return _handledEvents.Any();
         }
 
-        public bool EnqueuedAnEventOfType<T>()
+        public bool EnqueuedEventOfType<T>()
         {
             return _handledEvents.Any(InstanceOf<T>);
         }

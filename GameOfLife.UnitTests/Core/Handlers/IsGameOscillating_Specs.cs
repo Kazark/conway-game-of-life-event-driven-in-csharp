@@ -21,19 +21,27 @@ namespace GameOfLife.UnitTests.Core.Handlers
             });
         }
 
-        void it_publishes_GameIsNotOscillating_if_game_starts_in_statis()
+        void it_publishes_GameIsNotOscillating_if_original_game_is_in_statis()
         {
             ConsumeEventOfInitialState();
 
-            _channelMock.LastEnqueuedEventWasOfType<GameIsNotOscillating>().should_be_true();
+            _channelMock.EnqueuedEventOfType<GameIsNotOscillating>().should_be_true();
         }
+
+        void it_publishes_StatisReached_event_if_original_game_is_in_stasis()
+        {
+            ConsumeEventOfInitialState();
+
+            _channelMock.EnqueuedEventOfType<StatisReached>().should_be_true();
+        }
+
 
         void it_publishes_GameIsNotOscillating_if_game_reaches_statis()
         {
             ConsumeEventOfSecondaryState();
             ConsumeEventOfSecondaryState();
 
-            _channelMock.LastEnqueuedEventWasOfType<GameIsNotOscillating>().should_be_true();
+            _channelMock.EnqueuedEventOfType<GameIsNotOscillating>().should_be_true();
         }
 
         void it_publishes_GameIsNotOscillating_after_receiving_both_messages_if_new_generation_does_not_match_previous_generations()

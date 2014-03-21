@@ -46,7 +46,7 @@ namespace GameOfLife.UnitTests.Core.Handlers
         void it_does_not_publish_StatisReached_event_when_original_game_has_not_reached_stasis()
         {
             ConsumeEventOfSecondaryState();
-            _channelMock.EnqueuedAnEventOfType<StatisReached>().should_be_false();
+            _channelMock.EnqueuedEventOfType<StatisReached>().should_be_false();
         }
 
         void it_publishes_StatisNotReached_event_when_original_game_has_not_reached_stasis()
@@ -60,7 +60,7 @@ namespace GameOfLife.UnitTests.Core.Handlers
             ConsumeEventOfSecondaryState();
             ConsumeEventSameAsOriginalState();
             ConsumeEventOfSecondaryState();
-            _channelMock.EnqueuedAnEventOfType<StatisReached>().should_be_false();
+            _channelMock.EnqueuedEventOfType<StatisReached>().should_be_false();
         }
 
         void it_publishes_StatisReached_event_when_the_game_has_reached_stasis()
