@@ -21,49 +21,44 @@ namespace GameOfLife.UnitTests.Core.Handlers
             });
         }
 
-        void it_publishes_GameIsNotOscillating_if_original_game_is_in_Stasis()
-        {
-            ConsumeEventOfInitialState();
-
-            _channelMock.EnqueuedEventOfType<GameIsNotOscillating>().should_be_true();
-        }
-
         void it_publishes_StasisReached_event_if_original_game_is_in_stasis()
         {
             ConsumeEventOfInitialState();
 
+            _channelMock.EnqueuedEventsCount.should_be(1);
             _channelMock.EnqueuedEventOfType<StasisReached>().should_be_true();
         }
 
 
-        void it_publishes_GameIsNotOscillating_if_game_reaches_Stasis()
+        void it_publishes_StasisReached_if_game_reaches_Stasis()
         {
             ConsumeEventOfSecondaryState();
             ConsumeEventOfSecondaryState();
 
-            _channelMock.EnqueuedEventOfType<GameIsNotOscillating>().should_be_true();
+            _channelMock.EnqueuedEventOfType<StasisReached>().should_be_true();
         }
 
-        void it_publishes_GameIsNotOscillating_after_if_new_generation_does_not_match_old_generations()
+        void it_publishes_GenerationCompleted_if_new_generation_does_not_match_previous_generations()
         {
             ConsumeEventOfSecondaryState();
             ConsumeEventOfTertiaryState();
 
-            _channelMock.CountEnqueuedEventsOfType<GameIsNotOscillating>().should_be(2);
-        }
-
-        void it_publishes_StasisNotReached_if_new_generation_does_not_match_immediately_previous_generation()
-        {
-            ConsumeEventOfSecondaryState();
-            ConsumeEventOfTertiaryState();
-
-            _channelMock.CountEnqueuedEventsOfType<StasisNotReached>().should_be(2);
+            _channelMock.CountEnqueuedEventsOfType<GenerationCompleted>().should_be(2);
         }
 
         void it_publishes_GameIsOscillating_if_game_returns_to_original_state()
         {
             ConsumeEventOfSecondaryState();
             ConsumeEventOfInitialState();
+
+            _channelMock.LastEnqueuedEventWasOfType<GameIsOscillating>().should_be_true();
+        }
+
+        void it_publishes_GameIsOscillating_if_game_returns_to_previous_state()
+        {
+            ConsumeEventOfSecondaryState();
+            ConsumeEventOfTertiaryState();
+            ConsumeEventOfSecondaryState();
 
             _channelMock.LastEnqueuedEventWasOfType<GameIsOscillating>().should_be_true();
         }

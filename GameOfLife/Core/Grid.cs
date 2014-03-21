@@ -31,10 +31,16 @@ namespace GameOfLife.Core
             return GetEnumerator();
         }
 
-        public List<T> AsListOfCellStates()
+        private List<T> AsListOfCellStates()
         {
             return _data.Select(cell => cell.value).ToList();
         }
+
+        public bool InSameStateAs(Grid<T> that)
+        {
+            return AsListOfCellStates().SequenceEqual(that.AsListOfCellStates());
+        }
+
 
         public Cell<T> CellAt(int row, int column)
         {

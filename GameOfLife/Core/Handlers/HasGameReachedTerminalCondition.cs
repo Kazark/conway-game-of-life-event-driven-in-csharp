@@ -10,8 +10,8 @@ namespace GameOfLife.Core.Handlers
         IConsume<OneGenerationOfCellStatesAggregated>
     {
         private readonly IEnqueueEventsOnChannel _channel;
-        private readonly List<List<bool>> _oldStates = new List<List<bool>>();
-        private List<bool> _previousState;
+        private readonly List<Grid<bool>> _oldStates = new List<Grid<bool>>();
+        private Grid<bool> _previousState;
 
         public HasGameReachedTerminalCondition(IEnqueueEventsOnChannel channel)
         {
@@ -20,40 +20,41 @@ namespace GameOfLife.Core.Handlers
 
         public void Consume(GameInitiated eventData)
         {
-            _previousState = eventData.grid.AsListOfCellStates();
+            _previousState = eventData.grid;
         }
 
         public void Consume(OneGenerationOfCellStatesAggregated eventData)
         {
-            var newState = eventData.grid.AsListOfCellStates();
+            var newState = eventData.grid;
             PublishWhetherTerminalStateHasBeenReached(newState);
             _oldStates.Add(_previousState);
             _previousState = newState;
         }
 
-        private void PublishWhetherTerminalStateHasBeenReached(List<bool> newState)
+        private void PublishWhetherTerminalStateHasBeenReached(Grid<bool> newState)
         {
-            if (newState.SequenceEqual(_previousState))
+            if (newState.InSameStateAs(_previousState))
             {
-                _channel.Enqueue(new GameIsNotOscillating());
                 _channel.Enqueue(new StasisReached());
             }
             else
             {
-                _channel.Enqueue(new StasisNotReached());
                 PublishWhetherKineticGameIsOscillating(newState);
             }
         }
 
-        private void PublishWhetherKineticGameIsOscillating(IEnumerable<bool> newState)
+        private void PublishWhetherKineticGameIsOscillating(Grid<bool> newState)
         {
-            if (_oldStates.Any(prev => prev.SequenceEqual(newState)))
+            if (_oldStates.Any(prev => prev.InSameStateAs(newState)))
             {
                 _channel.Enqueue(new GameIsOscillating());
             }
             else
             {
-                _channel.Enqueue(new GameIsNotOscillating());
+                _channel.Enqueue(new GenerationCompleted
+                {
+                    grid = newState
+                });
             }
         }
     }
