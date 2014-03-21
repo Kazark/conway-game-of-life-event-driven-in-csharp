@@ -51,7 +51,6 @@
     <Compile Include="Core\Handlers\CellStateAggregator_Specs.cs" />
     <Compile Include="Core\Handlers\DetermineNextStateOfLivingCell_Specs.cs" />
     <Compile Include="Core\Handlers\DetermineNextStateOfDeadCell_Specs.cs" />
-    <Compile Include="Core\Handlers\HasGameReachedStatis_Specs.cs" />
     <Compile Include="Core\Handlers\HasGameReachedTerminalCondition_Specs.cs" />
     <Compile Include="Core\Handlers\LivingNeighborsCounter_Specs.cs" />
     <Compile Include="EventInfrastructure\Channel_Specs.cs" />
