@@ -31,6 +31,11 @@ namespace GameOfLife.Core
             return GetEnumerator();
         }
 
+        public List<T> AsListOfCellStates()
+        {
+            return _data.Select(cell => cell.value).ToList();
+        }
+
         public Cell<T> CellAt(int row, int column)
         {
             return CellAt(new PositionInGrid(row, column));

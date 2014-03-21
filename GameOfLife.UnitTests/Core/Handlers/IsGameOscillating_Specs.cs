@@ -28,6 +28,14 @@ namespace GameOfLife.UnitTests.Core.Handlers
             _channelMock.LastEnqueuedEventWasOfType<GameIsNotOscillating>().should_be_true();
         }
 
+        void it_publishes_GameIsNotOscillating_if_game_reaches_statis()
+        {
+            ConsumeEventOfSecondaryState();
+            ConsumeEventOfSecondaryState();
+
+            _channelMock.LastEnqueuedEventWasOfType<GameIsNotOscillating>().should_be_true();
+        }
+
         void it_publishes_GameIsNotOscillating_after_receiving_both_messages_if_new_generation_does_not_match_previous_generations()
         {
             ConsumeEventOfSecondaryState();
@@ -35,6 +43,14 @@ namespace GameOfLife.UnitTests.Core.Handlers
 
             _channelMock.EnqueuedEventsCount.should_be(2);
             _channelMock.CountEnqueuedEventsOfType<GameIsNotOscillating>().should_be(2);
+        }
+
+        void it_publishes_GameIsOscillating_if_game_returns_to_original_state()
+        {
+            ConsumeEventOfSecondaryState();
+            ConsumeEventOfInitialState();
+
+            _channelMock.LastEnqueuedEventWasOfType<GameIsOscillating>().should_be_true();
         }
 
         private void ConsumeEventOfInitialState()

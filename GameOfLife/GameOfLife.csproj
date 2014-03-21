@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Core\Cell.cs" />
     <Compile Include="Core\Events\GameInitiated.cs" />
+    <Compile Include="Core\Events\GameIsOscillating.cs" />
     <Compile Include="Core\Events\GameIsNotOscillating.cs" />
     <Compile Include="Core\Events\LivingNeighborsOfDeadCellCounted.cs" />
     <Compile Include="Core\Events\LivingNeighborsOfLiveCellCounted.cs" />
