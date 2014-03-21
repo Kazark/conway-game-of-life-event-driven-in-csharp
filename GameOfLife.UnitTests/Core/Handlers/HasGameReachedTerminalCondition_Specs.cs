@@ -5,16 +5,16 @@ using NSpec;
 
 namespace GameOfLife.UnitTests.Core.Handlers
 {
-    class IsGameOscillating_Specs : nspec
+    class HasGameReachedTerminalCondition_Specs : nspec
     {
         private const int GridSize = 5;
-        private IsGameOscillating _subject;
+        private HasGameReachedTerminalCondition _subject;
         private EnqueuerMock _channelMock;
 
         void before_each()
         {
             _channelMock = new EnqueuerMock();
-            _subject = new IsGameOscillating(_channelMock);
+            _subject = new HasGameReachedTerminalCondition(_channelMock);
             _subject.Consume(new GameInitiated
             {
                 grid = new BuildGridOfSize(GridSize).Build()

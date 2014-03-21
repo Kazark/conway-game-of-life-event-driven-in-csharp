@@ -5,7 +5,7 @@ using GameOfLife.EventInfrastructure;
 
 namespace GameOfLife.Core.Handlers
 {
-    public class IsGameOscillating :
+    public class HasGameReachedTerminalCondition :
         IConsume<GameInitiated>,
         IConsume<OneGenerationOfCellStatesAggregated>
     {
@@ -13,7 +13,7 @@ namespace GameOfLife.Core.Handlers
         private readonly List<List<bool>> _oldStates = new List<List<bool>>();
         private List<bool> _previousState;
 
-        public IsGameOscillating(IEnqueueEventsOnChannel channel)
+        public HasGameReachedTerminalCondition(IEnqueueEventsOnChannel channel)
         {
             _channel = channel;
         }
