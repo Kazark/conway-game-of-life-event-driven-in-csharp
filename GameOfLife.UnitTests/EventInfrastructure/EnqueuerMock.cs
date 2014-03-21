@@ -8,6 +8,11 @@ namespace GameOfLife.UnitTests.EventInfrastructure
     {
         private readonly List<Event> _handledEvents = new List<Event>();
 
+        public int EnqueuedEventsCount
+        {
+            get { return _handledEvents.Count; }
+        }
+
         public void Enqueue(Event eventData)
         {
             _handledEvents.Add(eventData);
@@ -15,7 +20,7 @@ namespace GameOfLife.UnitTests.EventInfrastructure
 
         public bool LastEnqueuedEventWasOfType<T>()
         {
-            return EnqueuedAnEvent() && _handledEvents.Last().GetType() == typeof(T);
+            return EnqueuedAnEvent() && InstanceOf<T>(_handledEvents.Last());
         }
 
         public bool EnqueuedAnEvent()
@@ -25,7 +30,17 @@ namespace GameOfLife.UnitTests.EventInfrastructure
 
         public bool EnqueuedAnEventOfType<T>()
         {
-            return _handledEvents.Any(e => e.GetType() == typeof(T));
+            return _handledEvents.Any(InstanceOf<T>);
+        }
+
+        public int CountEnqueuedEventsOfType<T>()
+        {
+            return _handledEvents.Count(InstanceOf<T>);
+        }
+
+        private static bool InstanceOf<T>(Event eventData)
+        {
+            return eventData.GetType() == typeof(T);
         }
     }
 }

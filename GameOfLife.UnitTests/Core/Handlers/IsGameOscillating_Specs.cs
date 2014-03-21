@@ -21,28 +21,28 @@ namespace GameOfLife.UnitTests.Core.Handlers
             });
         }
 
-        void it_does_nothing_if_it_has_only_received_StatisNotReached()
+        void it_publishes_GameIsNotOscillating_if_game_starts_in_statis()
         {
-            StatisNotReached();
+            ConsumeEventOfInitialState();
 
-            _channelMock.EnqueuedAnEvent().should_be_false();
-        }
-
-        void it_does_nothing_if_it_has_only_received_OneGenerationOfCellStatesAggregated()
-        {
-            _subject.Consume(new OneGenerationOfCellStatesAggregated());
-
-            _channelMock.EnqueuedAnEvent().should_be_false();
+            _channelMock.LastEnqueuedEventWasOfType<GameIsNotOscillating>().should_be_true();
         }
 
         void it_publishes_GameIsNotOscillating_after_receiving_both_messages_if_new_generation_does_not_match_previous_generations()
         {
             ConsumeEventOfSecondaryState();
-            StatisNotReached();
             ConsumeEventOfTertiaryState();
-            StatisNotReached();
 
-            _channelMock.LastEnqueuedEventWasOfType<GameIsNotOscillating>().should_be_true();
+            _channelMock.EnqueuedEventsCount.should_be(2);
+            _channelMock.CountEnqueuedEventsOfType<GameIsNotOscillating>().should_be(2);
+        }
+
+        private void ConsumeEventOfInitialState()
+        {
+            _subject.Consume(new OneGenerationOfCellStatesAggregated
+            {
+                grid = new BuildGridOfSize(GridSize).Build()
+            });
         }
 
         void ConsumeEventOfSecondaryState()
@@ -59,11 +59,6 @@ namespace GameOfLife.UnitTests.Core.Handlers
             {
                 grid = new BuildGridOfSize(GridSize).WithNLivingCells(2).Build()
             });
-        }
-
-        void StatisNotReached()
-        {
-            _subject.Consume(new StatisNotReached());
         }
     }
 }
