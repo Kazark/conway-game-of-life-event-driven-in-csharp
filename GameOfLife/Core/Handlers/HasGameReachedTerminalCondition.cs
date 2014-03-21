@@ -18,9 +18,21 @@ namespace GameOfLife.Core.Handlers
             _channel = channel;
         }
 
+        public void Consume(GameInitiated eventData)
+        {
+            _previousState = eventData.grid.AsListOfCellStates();
+        }
+
         public void Consume(OneGenerationOfCellStatesAggregated eventData)
         {
             var newState = eventData.grid.AsListOfCellStates();
+            PublishWhetherTerminalStateHasBeenReached(newState);
+            _oldStates.Add(_previousState);
+            _previousState = newState;
+        }
+
+        private void PublishWhetherTerminalStateHasBeenReached(List<bool> newState)
+        {
             if (newState.SequenceEqual(_previousState))
             {
                 _channel.Enqueue(new GameIsNotOscillating());
@@ -29,22 +41,20 @@ namespace GameOfLife.Core.Handlers
             else
             {
                 _channel.Enqueue(new StasisNotReached());
-                if (_oldStates.Any(prev => prev.SequenceEqual(newState)))
-                {
-                    _channel.Enqueue(new GameIsOscillating());
-                }
-                else
-                {
-                    _channel.Enqueue(new GameIsNotOscillating());
-                }
+                PublishWhetherKineticGameIsOscillating(newState);
             }
-            _oldStates.Add(_previousState);
-            _previousState = newState;
         }
 
-        public void Consume(GameInitiated eventData)
+        private void PublishWhetherKineticGameIsOscillating(IEnumerable<bool> newState)
         {
-            _previousState = eventData.grid.AsListOfCellStates();
+            if (_oldStates.Any(prev => prev.SequenceEqual(newState)))
+            {
+                _channel.Enqueue(new GameIsOscillating());
+            }
+            else
+            {
+                _channel.Enqueue(new GameIsNotOscillating());
+            }
         }
     }
 }
