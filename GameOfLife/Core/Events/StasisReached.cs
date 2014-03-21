@@ -2,7 +2,7 @@
 
 namespace GameOfLife.Core.Events
 {
-    public class StatisReached : Event
+    public class StasisReached : Event
     {
     }
 }

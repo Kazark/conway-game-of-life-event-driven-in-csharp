@@ -5,14 +5,14 @@ using GameOfLife.EventInfrastructure;
 
 namespace GameOfLife.Core.Handlers
 {
-    public class HasGameReachedStatis :
+    public class HasGameReachedStasis :
         IConsume<GameInitiated>,
         IConsume<OneGenerationOfCellStatesAggregated>
     {
         private readonly IEnqueueEventsOnChannel _channel;
         private List<bool> _previousState;
 
-        public HasGameReachedStatis(IEnqueueEventsOnChannel channel)
+        public HasGameReachedStasis(IEnqueueEventsOnChannel channel)
         {
             _channel = channel;
         }
@@ -22,11 +22,11 @@ namespace GameOfLife.Core.Handlers
             var currentState = eventData.grid.Select(cell => cell.value).ToList();
             if (currentState.SequenceEqual(_previousState))
             {
-                _channel.Enqueue(new StatisReached());
+                _channel.Enqueue(new StasisReached());
             }
             else
             {
-                _channel.Enqueue(new StatisNotReached());
+                _channel.Enqueue(new StasisNotReached());
             }
             _previousState = currentState;
         }

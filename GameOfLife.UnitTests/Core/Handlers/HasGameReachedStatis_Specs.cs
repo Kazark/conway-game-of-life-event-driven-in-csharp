@@ -5,16 +5,16 @@ using NSpec;
 
 namespace GameOfLife.UnitTests.Core.Handlers
 {
-    class HasGameReachedStatis_Specs : nspec
+    class HasGameReachedStasis_Specs : nspec
     {
         private const int GridSize = 5;
-        private HasGameReachedStatis _subject;
+        private HasGameReachedStasis _subject;
         private EnqueuerMock _channelMock;
 
         void before_each()
         {
             _channelMock = new EnqueuerMock();
-            _subject = new HasGameReachedStatis(_channelMock);
+            _subject = new HasGameReachedStasis(_channelMock);
             _subject.Consume(new GameInitiated
             {
                 grid = new BuildGridOfSize(GridSize).Build()
@@ -37,37 +37,37 @@ namespace GameOfLife.UnitTests.Core.Handlers
             });
         }
 
-        void it_publishes_StatisReached_event_when_original_game_is_in_stasis()
+        void it_publishes_StasisReached_event_when_original_game_is_in_stasis()
         {
             ConsumeEventSameAsOriginalState();
-            _channelMock.LastEnqueuedEventWasOfType<StatisReached>().should_be_true();
+            _channelMock.LastEnqueuedEventWasOfType<StasisReached>().should_be_true();
         }
 
-        void it_does_not_publish_StatisReached_event_when_original_game_has_not_reached_stasis()
+        void it_does_not_publish_StasisReached_event_when_original_game_has_not_reached_stasis()
         {
             ConsumeEventOfSecondaryState();
-            _channelMock.EnqueuedEventOfType<StatisReached>().should_be_false();
+            _channelMock.EnqueuedEventOfType<StasisReached>().should_be_false();
         }
 
-        void it_publishes_StatisNotReached_event_when_original_game_has_not_reached_stasis()
+        void it_publishes_StasisNotReached_event_when_original_game_has_not_reached_stasis()
         {
             ConsumeEventOfSecondaryState();
-            _channelMock.LastEnqueuedEventWasOfType<StatisNotReached>().should_be_true();
+            _channelMock.LastEnqueuedEventWasOfType<StasisNotReached>().should_be_true();
         }
 
-        void it_does_not_publish_StatisReached_event_when_original_game_is_in_loop()
+        void it_does_not_publish_StasisReached_event_when_original_game_is_in_loop()
         {
             ConsumeEventOfSecondaryState();
             ConsumeEventSameAsOriginalState();
             ConsumeEventOfSecondaryState();
-            _channelMock.EnqueuedEventOfType<StatisReached>().should_be_false();
+            _channelMock.EnqueuedEventOfType<StasisReached>().should_be_false();
         }
 
-        void it_publishes_StatisReached_event_when_the_game_has_reached_stasis()
+        void it_publishes_StasisReached_event_when_the_game_has_reached_stasis()
         {
             ConsumeEventOfSecondaryState();
             ConsumeEventOfSecondaryState();
-            _channelMock.LastEnqueuedEventWasOfType<StatisReached>().should_be_true();
+            _channelMock.LastEnqueuedEventWasOfType<StasisReached>().should_be_true();
         }
     }
 }

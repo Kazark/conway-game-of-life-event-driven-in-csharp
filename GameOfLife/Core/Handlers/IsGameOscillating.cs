@@ -24,10 +24,11 @@ namespace GameOfLife.Core.Handlers
             if (newState.SequenceEqual(_previousState))
             {
                 _channel.Enqueue(new GameIsNotOscillating());
-                _channel.Enqueue(new StatisReached());
+                _channel.Enqueue(new StasisReached());
             }
             else
             {
+                _channel.Enqueue(new StasisNotReached());
                 if (_oldStates.Any(prev => prev.SequenceEqual(newState)))
                 {
                     _channel.Enqueue(new GameIsOscillating());
