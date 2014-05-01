@@ -1,4 +1,5 @@
-﻿using GameOfLife.EventInfrastructure;
+﻿using System;
+using GameOfLife.EventInfrastructure;
 using NSpec;
 
 namespace GameOfLife.UnitTests.EventInfrastructure
@@ -22,6 +23,14 @@ namespace GameOfLife.UnitTests.EventInfrastructure
             const string Instance = "something";
             _subject.RegisterInjector(x => Instance);
             _subject.GetInstanceOf<string>().should_be(Instance);
+        }
+
+        void it_scopes_instances_as_singletons()
+        {
+            _subject.RegisterInjector(x => Guid.NewGuid().ToString());
+            var instance1 = _subject.GetInstanceOf<string>();
+            var instance2 = _subject.GetInstanceOf<string>();
+            instance1.should_be(instance2);
         }
     }
 }
