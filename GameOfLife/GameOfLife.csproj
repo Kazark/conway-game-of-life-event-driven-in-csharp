@@ -65,6 +65,7 @@
     <Compile Include="EventInfrastructure\IEnqueueEventsOnChannel.cs" />
     <Compile Include="EventInfrastructure\IConsume.cs" />
     <Compile Include="EventInfrastructure\IDeliverEventsFromChannel.cs" />
+    <Compile Include="EventInfrastructure\LazyInitContainer.cs" />
     <Compile Include="EventInfrastructure\Router.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
