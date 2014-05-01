@@ -16,5 +16,12 @@ namespace GameOfLife.UnitTests.EventInfrastructure
         {
             _subject.GetInstanceOf<string>().should_be(null);
         }
+
+        void it_does_not_return_null_when_injector_is_registered_for_a_type()
+        {
+            const string Instance = "something";
+            _subject.RegisterInjector(x => Instance);
+            _subject.GetInstanceOf<string>().should_be(Instance);
+        }
     }
 }
