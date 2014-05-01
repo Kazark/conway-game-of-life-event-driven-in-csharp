@@ -26,36 +26,36 @@ namespace GameOfLife.UnitTests.EventInfrastructure
 
         void it_can_add_events_to_the_queue()
         {
-            _subject.Consume(_event);
+            _subject.Enqueue(_event);
             _subject.HasMore().should_be_true();
         }
 
         void it_can_pull_events_off_the_queue()
         {
-            _subject.Consume(_event);
+            _subject.Enqueue(_event);
             _subject.DeliverOne();
             _subject.HasMore().should_be_false();
         }
 
         void it_pulls_events_off_one_at_a_time()
         {
-            _subject.Consume(_event);
-            _subject.Consume(new EventForTesting());
+            _subject.Enqueue(_event);
+            _subject.Enqueue(new EventForTesting());
             _subject.DeliverOne();
             _subject.HasMore().should_be_true();
         }
 
-        void it_has_a_FIFO_queueing_discipline()
+        void it_has_a_FIFO_queuing_discipline()
         {
-            _subject.Consume(_event);
-            _subject.Consume(new EventForTesting());
+            _subject.Enqueue(_event);
+            _subject.Enqueue(new EventForTesting());
             _subject.DeliverOne();
             _handler.ConsumedEventWithId(_event.ID).should_be_true();
         }
 
-        void it_passes_the_event_to_the_handler_when_dequeueing_it()
+        void it_passes_the_event_to_the_handler_when_dequeuing_it()
         {
-            _subject.Consume(_event);
+            _subject.Enqueue(_event);
             _subject.DeliverOne();
             _handler.ConsumedEventWithId(_event.ID).should_be_true();
         }
