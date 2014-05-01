@@ -5,16 +5,24 @@ namespace GameOfLife.EventInfrastructure
 {
     public class Router
     {
-        private readonly Dictionary<Type, Action<Event>> _registry;
+        private delegate void Publish(Event eventData);
+        private readonly Dictionary<Type, Publish> _registry;
 
         public Router()
         {
-            _registry = new Dictionary<Type, Action<Event>>();
+            _registry = new Dictionary<Type, Publish>();
         }
 
         public void RegisterHandler<T>(IConsume<T> handler) where T : class, Event
         {
-            _registry.Add(typeof(T), e => handler.Consume(e as T));
+            if (_registry.ContainsKey(typeof(T)))
+            {
+                _registry[typeof(T)] += e => handler.Consume(e as T);
+            }
+            else
+            {
+                _registry.Add(typeof(T), e => handler.Consume(e as T));
+            }
         }
 
         public void InvokeHandler(Event eventData)
