@@ -32,5 +32,28 @@ namespace GameOfLife.UnitTests.EventInfrastructure
             var instance2 = _subject.GetInstanceOf<string>();
             instance1.should_be(instance2);
         }
+
+        void it_interfaces_with_Injector()
+        {
+            _subject.RegisterInjector(BuildInjector.For<C>().Inject<A>().Then<B>().Build());
+            var instance1 = _subject.GetInstanceOf<string>();
+            var instance2 = _subject.GetInstanceOf<string>();
+            instance1.should_be(instance2);
+        }
+
+        private class A
+        {
+        }
+
+        private class B
+        {
+        }
+
+        private class C
+        {
+            C(A a, B b)
+            {
+            }
+        }
     }
 }
